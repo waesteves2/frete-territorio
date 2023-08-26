@@ -62,7 +62,6 @@
             font-size: 20px;
             background-color: #004899;
             color: white;
-
         }
     </style>
 
@@ -1150,6 +1149,10 @@
             if (estadoFrete) {
                 if (volumes >= 1 && volumes <= 15 && peso <= 700 && valorNF <= 35000) {
                     frete = estadoFrete.valorPorVolume[volumes];
+
+                    if (valorNF > 3500 && volumes <= 5) {
+                        frete += 5.11;
+                    }
                 } else if (volumes >= 5 && peso <= 100 && valorNF <= 3500) {
                     alert("Entre em contato com a transportadora através do telefone " + telefone);
                     return;
@@ -1164,6 +1167,8 @@
 
             document.getElementById("resultado").textContent = "O valor do frete é: R$ " + frete.toFixed(2);
         }
+
+
     </script>
 
     <script>
