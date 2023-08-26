@@ -59,7 +59,8 @@
 
         #resultado {
             margin-top: 20px;
-            font-size: 18px;
+            font-size: 20px;
+            background-color: #004899;
         }
     </style>
 
@@ -1172,8 +1173,11 @@
 
             var cidadeSemAcento = cidade.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
+            cidadeSemAcento = cidadeSemAcento.replace(/([a-z]+)\s+([a-z]{2})\s*$/, '$1 $2');
+
             inputCidade.value = cidadeSemAcento;
         }
+
 
         window.onload = function () {
             var inputCidade = document.getElementById("cidade");
