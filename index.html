@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -1153,6 +1154,11 @@
                     if (valorNF > 3500 && volumes <= 5) {
                         frete += 5.11;
                     }
+
+		if (peso >100 && volumes <=5){
+			frete += 4.23;
+		   }
+
                 } else if (volumes >= 5 && peso <= 100 && valorNF <= 3500) {
                     alert("Entre em contato com a transportadora através do telefone " + telefone);
                     return;
