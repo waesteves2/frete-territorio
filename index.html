@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -1110,30 +1111,34 @@
 
                     }
                 },
-                "df": {
-                    cidades: ["brasilia df", , "gama df", , "taguatinga df", , "brazlandia df", , "sobradinho df", , "planaltina df", , "paranoa df", , "nucleo bandeirante df", , "ceilândia df", , "guara df", , "cruzeiro df", , "samambaia df", , "santa maria df", , "sao sebastiao df", , "recanto das emas df", , "lago sul df", , "riacho fundo df", , "lago norte df", , "candangolândia df", , "aguas claras df", , "riacho fundo ii df", , "sudoeste octogonal df", , "varjao df", , "park way df", , "sobradinho ii df", , "jardim botânico df", , "itapoa df", , "sia - setor de industria e abastecimento df", , "vicente pires df", , "fercal df", , "sol nascente por do sol df", , "arniqueira df",],
-
-                    valorPorVolume: {
-                        1: 85,
-                        2: 95,
-                        3: 105,
-                        4: 115,
-                        5: 125,
-                        6: 185.53,
-                        7: 237.23,
-                        8: 284.93,
-                        9: 332.63,
-                        10: 384.33,
-                        11: 432.03,
-                        12: 483.73,
-                        13: 531.43,
-                        14: 583.12,
-                        15: 630.82
-
-
-                    }
-                }
-            }
+                  "df": {
+        cidades: ["brasilia df", "gama df", "taguatinga df", "brazlandia df", "sobradinho df", "planaltina df", "paranoa df", "nucleo bandeirante df", "ceilândia df", "guara df", "cruzeiro df", "samambaia df", "santa maria df", "sao sebastiao df", "recanto das emas df", "lago sul df", "riacho fundo df", "lago norte df", "candangolândia df", "aguas claras df", "riacho fundo ii df", "sudoeste octogonal df", "varjao df", "park way df", "sobradinho ii df", "jardim botânico df", "itapoa df", "sia - setor de industria e abastecimento df", "vicente pires df", "fercal df", "sol nascente por do sol df", "arniqueira df"],
+        valorPorVolume: {
+            1: 85,
+            2: 95,
+            3: 105,
+            4: 115,
+            5: 125,
+            6: 185.53,
+            7: 237.23,
+            8: 284.93,
+            9: 332.63,
+            10: 384.33,
+            11: 432.03,
+            12: 483.73,
+            13: 531.43,
+            14: 583.12,
+            15: 630.82
+        },
+        prazoEntrega: {
+            "brasilia df": 3,
+            "gama df": 3,
+            "taguatinga df": 3,
+           
+        }
+    }
+    
+};
 
             var estadoFrete = null;
 
@@ -1171,7 +1176,8 @@
                 return;
             }
 
-            document.getElementById("resultado").textContent = "O valor do frete é: R$ " + frete.toFixed(2);
+            document.getElementById("resultado").textContent = "O valor do frete é: R$ " + frete.toFixed(2) + " prazo de entrega " + estadoFrete.prazoEntrega[cidade.toLowerCase()] + " dias.";
+
         }
 
 
