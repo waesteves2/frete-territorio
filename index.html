@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -1181,27 +1182,47 @@
 
 
     </script>
+<script>
+    function validarCidade(event) {
+        var inputCidade = document.getElementById("cidade");
+        var cidade = inputCidade.value;
 
-    <script>
-        function validarCidade() {
+        cidade = cidade.toLowerCase();
+
+        var cidadeSemAcento = cidade.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+        // Remova todos os espaços em branco extras e substitua por um único espaço
+        cidadeSemAcento = cidadeSemAcento.replace(/\s+/g, ' ');
+
+        // Verifique se a cidade termina com uma sigla de estado e não tem espaço após a sigla
+        if (!/ (pr|sp|sc|df|mg|go|mt|ms|es|rj|ro)$/.test(cidadeSemAcento)) {
+            cidadeSemAcento = cidadeSemAcento.replace(/([a-z]+)\s+([a-z]{2})$/, '$1 $2');
+        }
+
+        inputCidade.value = cidadeSemAcento;
+    }
+
+    function bloquearEspaco(event) {
+        if (event.keyCode === 32) {
             var inputCidade = document.getElementById("cidade");
             var cidade = inputCidade.value;
-
-            cidade = cidade.toLowerCase();
-
-            var cidadeSemAcento = cidade.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-            cidadeSemAcento = cidadeSemAcento.replace(/([a-z]+)\s+([a-z]{2})\s*$/, '$1 $2');
-
-            inputCidade.value = cidadeSemAcento;
+            if (/ (pr|sp|sc|df|mg|go|mt|ms|es|rj|ro)$/.test(cidade)) {
+                event.preventDefault();
+            }
         }
+    }
+
+    window.onload = function () {
+        var inputCidade = document.getElementById("cidade");
+        inputCidade.addEventListener("input", validarCidade);
+        inputCidade.addEventListener("keydown", bloquearEspaco);
+        inputCidade.focus();
+    }
+</script>
 
 
-        window.onload = function () {
-            var inputCidade = document.getElementById("cidade");
-            inputCidade.focus();
-        }
-    </script>
+
+
 
 
 
@@ -1228,6 +1249,9 @@
         <input type="number" id="valorNF" name="valorNF" required>
 
         <label for="cidade">Cidade de Destino:</label>
+<label for="cepSP" id="cepSPLabel" style="display: none;">CEP (São Paulo):</label>
+<input type="text" id="cepSP" name="cepSP" style="display: none;">
+
         <input type="text" id="cidade" oninput="validarCidade()">
         <span id="mensagem" style="color: gray;">Digite a cidade depois a Sigla do Estado</span>
         <span id="mensagem" style="color: gray;">Ex:jau sp</span>
