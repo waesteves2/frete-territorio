@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -1157,11 +1154,11 @@
                 if (volumes >= 1 && volumes <= 15 && peso <= 1000 && valorNF <= 35000) {
                     frete = estadoFrete.valorPorVolume[volumes];
 
-                    if (valorNF > 3500 && volumes <= 5) {
+                    if (valorNF > 3500 && volumes <= 16) {
                         frete += 5.11;
                     }
 
-		if (peso >100 && volumes <=5){
+		if (peso >100 && volumes <=16){
 			frete += 4.23;
 		   }
 
