@@ -1349,10 +1349,10 @@
             freteElement.textContent = "Valor do frete : R$ " + frete.toFixed(2);
 
             var prazo = estadoFrete.prazoEntrega[cidade.toLowerCase()] + 0;//aumentar o prazo de entrega no lugar do 0 por a quantia de dias a mais desejado
-            var prazoTexto = prazo === 1 ? ": dia útil" : ": dias úteis";
+            var prazoTexto = prazo === 1 ? "dia útil" : "dias úteis";
 
             var prazoElement = document.createElement("p");
-            prazoElement.textContent = "Prazo de entrega " + prazo + " " + prazoTexto + ".";
+            prazoElement.textContent = "Prazo de entrega : " + prazo + " " + prazoTexto + ".";
 
             resultadoElement.innerHTML = "";
 
