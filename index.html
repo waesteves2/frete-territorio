@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 
 <head>
   <title>Frete Território</title>
@@ -29,6 +29,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+
     }
 
     label {
@@ -81,8 +82,13 @@
       font-size: calc(74%);
     }
 
-    p {
+    #observacao{
       font-size: small;
+      
+    }
+    #valido{
+      font-size: small;
+      padding: 5px;
     }
   </style>
 
@@ -1702,7 +1708,7 @@
 
   <div class="logo"></div>
   <h2>Tabela Calçadistas</h2>
-  <p>Válido somente para fretes com origem em Jaú-SP</p>
+  <p id="valido" >Válido somente para fretes com origem em Jaú-SP</p>
 
   <form id="limparFormulario">
     <label for="volumes">Quantidade de Volumes:</label>
@@ -1749,8 +1755,8 @@
   </form>
 
   <div id="resultado"></div>
-  
-  <p>Obs: algumas regiões podem possuir taxas adicionais.</p>
+
+  <p id="observacao" >Obs: algumas regiões podem possuir taxas adicionais.</p>
 
 
   <div class="icon">
