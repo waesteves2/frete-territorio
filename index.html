@@ -14,7 +14,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.2/awesomplete.min.js"></script>
   <script src="./script.js"></script> <!-- Certifique-se de que cnpj.js seja carregado antes do uso de taxaBase -->
 
+  
+<script>
+   if (cnpjDestino.trim() === "") {
+        alert("Por favor, preencha o campo CPF/CNPJ do Destino para calcular o frete.");
+        return;
+    }
 
+</script>
 
   <style>
     body {
