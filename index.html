@@ -16,6 +16,7 @@
 
 
 
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -151,12 +152,10 @@
 
     body {
       background-color: #0073e6;
-      /* Azul claro */
     }
 
     button {
       background-color: #003366;
-      /* Azul escuro */
       color: white;
     }
 
@@ -171,7 +170,65 @@
     }
   </style>
 
+<style>
 
+
+  .modal {
+  display: none;
+  position: fixed;
+  top:1500px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: x-small;
+  color: black;
+}
+
+.modal-content {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: red;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+
+th {
+  background-color: #004899;
+  color: white;
+}
+
+
+
+</style>
 
 </head>
 
@@ -180,6 +237,7 @@
   <div class="logo">
 
   </div>
+  
   <h2>Tabela Calçadistas</h2>
   <p id="valido">Válido somente para fretes com origem em Jaú-SP</p>
 
@@ -235,10 +293,19 @@
     <input type="text" id="cepRJ" style="display: none;" onkeyup="formatarCEP('cepRJ')"
       placeholder="Digite o CEP do Destino">
 
-    <button type="button" onclick="calcularFrete()">Calcular Frete</button>
-  </form>
+      <button type="button" onclick="calcularFrete()">
+        <i class="fas fa-calculator"></i> Calcular Frete
+    </button>
+    
+     </form>
 
   <div id="resultado"></div>
+ 
+  <button type="button" onclick="imprimirResultado()">
+    <i class="fas fa-print"></i> Imprimir Cotação
+</button>
+
+
 
   <p id="observacao">Obs: algumas regiões podem possuir taxas adicionais.</p>
 
@@ -255,6 +322,37 @@
   </div>
 
 
+<script>
+ function imprimirResultado() {
+  var quantidadeVolumes = document.getElementById('volumes').value;
+  var pesoTotal = document.getElementById('peso').value;
+  var valorNF = document.getElementById('valorNF').value;
+  var cnpjDestino = document.getElementById('cnpjDestino').value;
+  var cidadeDestino = document.getElementById('cidade').value;
+  var resultadoFrete = document.getElementById('resultado').innerText;
+
+  var janelaImpressao = window.open('', '_blank', 'width=800,height=600');
+  janelaImpressao.document.write('<html><head><title>Extrato do Frete</title>');
+  janelaImpressao.document.write('<style>body { font-family: Arial, sans-serif; margin: 20px; } h2 { color: #004899; } #extrato { border: 2px solid #004899; padding: 10px; border-radius: 5px; } </style>');
+  janelaImpressao.document.write('</head><body>');
+  
+  
+  janelaImpressao.document.write('<div id="extrato">');
+  janelaImpressao.document.write('<img src="rte.png" alt="Logo da Empresa" style="max-width: 30%;">');
+  janelaImpressao.document.write('<h2>Cotação do Frete</h2>');
+  janelaImpressao.document.write('<p><strong>Volumes:</strong> ' + quantidadeVolumes + '</p>');
+  janelaImpressao.document.write('<p><strong>Peso:</strong> ' + pesoTotal + '</p>');
+  janelaImpressao.document.write('<p><strong>Valor da NF:</strong> ' + valorNF + '</p>');
+  janelaImpressao.document.write('<p><strong>CNPJ do Destino:</strong> ' + cnpjDestino + '</p>');
+  janelaImpressao.document.write('<p><strong>Cidade de Destino:</strong> ' + cidadeDestino + '</p>');
+  janelaImpressao.document.write('<p><strong>Valor do Frete:</strong> ' + resultadoFrete + '</p>');
+  janelaImpressao.document.write('</div>');
+  janelaImpressao.document.write('');
+  janelaImpressao.document.close();
+  janelaImpressao.open();
+}
+
+</script>
 
 
 </body>
