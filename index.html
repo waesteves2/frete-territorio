@@ -16,19 +16,48 @@
 
 
 
-
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Great Vibes';
       margin: 0;
       padding: 20px;
       text-align: center;
-      background-color: #f7f7f7;
+      background-color: #c8102e;
     }
 
     h2 {
       margin-bottom: 20px;
       color: white;
+      font-size: 36px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 10px #c8102e;
+      }
+
+      100% {
+        text-shadow: 0 0 20px #ffcc00;
+      }
+    }
+
+
+    .snowflake {
+      position: absolute;
+      font-size: 42px;
+      color: #ffffff;
+      animation: snow 10s linear infinite;
+    }
+
+    @keyframes snow {
+      0% {
+        transform: translateY(-100vh) rotate(0deg);
+      }
+
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
     }
 
     form {
@@ -39,31 +68,37 @@
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+
+
     }
 
     label {
       margin-top: 10px;
       display: block;
       font-weight: bold;
-      color: #004899;
+      color: #c8102e;
     }
 
     input[type="number"],
     input[type="text"],
     select {
+      font-family: "Chopin Script";
       padding: 10px;
       border-radius: 5px;
-      border: 2px solid #004899;
+      border: 2px solid #c8102e;
       width: 100%;
       max-width: 300px;
       box-sizing: border-box;
       margin-top: 5px;
+      color: #c8102e;
+
     }
 
     button {
       margin-top: 20px;
       padding: 10px 20px;
-      background-color: #004899;
+      background-color: #c8102e;
       color: white;
       border: none;
       border-radius: 5px;
@@ -73,11 +108,15 @@
 
     #resultado {
       margin-top: 20px;
-      font-size: 20px;
-      background-color: #004899;
-      color: white;
+      font-size: 15px;
+      background-color: white;
+      color: #c8102e;
       border-radius: 5px;
       padding: 5px;
+      background-image: url(https://i.pinimg.com/564x/39/e0/e8/39e0e84afe953aa21ea3b70dafb8479e.jpg);
+      background-size: contain;
+      font-family: 'Great Vibes', cursive;
+      font-weight: bold;/
     }
 
     #cidade {
@@ -92,12 +131,19 @@
     }
 
     #valido {
-      font-size: 14px;
+      font-size: 15px;
       padding: 5px;
       color: white;
     }
 
+    .logo {
+      width: 100%;
+      margin: auto;
+      margin-top: -25px;
+      height: 180px;
+      
 
+    }
 
     .icon {
       display: flex;
@@ -136,120 +182,93 @@
     .icon a:hover {
       color: #080808;
     }
+  </style>
+  <style>
+    #banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 85%;
+      height: 91%;
+      margin: 10px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #c8102e;
+      text-align: center;
+      padding: 20px;
+      z-index: 9999;
+      display: none;
+      font-size: 15px;
+      overflow: scroll;
+    }
 
-    .logo {
+    #fechar-banner {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #c8102e;
+    }
 
-      background-image: url(https://www.rte.com.br/acontece/wp-content/uploads/2017/05/rte-rodonaves_logotipo_negativo.png);
-      width: 320px;
-      height: 55px;
-      background-size: contain;
-      margin: auto;
-      border-radius: 2px;
-      background-repeat: no-repeat;
+    #print{
+
+      background-color: white;
+      color: #c8102e;
+    }
+
+    option{
+
+      color: #c8102e;
 
     }
 
+    ::placeholder{
 
-    body {
-      background-color: #0073e6;
-    }
-
-    button {
-      background-color: #003366;
-      color: white;
-    }
-
-    button {
-      background: linear-gradient(to bottom, #0073e6, #003366);
-      color: white;
-    }
-
-    #novembro-azul-message {
-
-      color: #0073e6
+      color: #c8102e;
+      text-align: center;
     }
   </style>
-
-<style>
-
-
-  .modal {
-  display: none;
-  position: fixed;
-  top:1500px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  font-size: x-small;
-  color: black;
-}
-
-.modal-content {
-  position: absolute;
-  top: 95%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 10px;
-  text-align: center;
-}
-
-
-
-.close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  cursor: pointer;
-  color: red;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-table, th, td {
-  border: 1px solid #ddd;
-}
-
-th, td {
-  padding: 5px;
-  text-align: left;
-}
-
-th {
-  background-color: #004899;
-  color: white;
-}
-
-
-
-</style>
 
 </head>
 
 <body>
 
+  <img src="./logo sem fundo.png" alt="" width="330">
+  <div id="banner" style="text-align: justify;">
+    <h3>Feliz Natal</h3>
+
+    
+
+    <h4>Queridos Clientes</h4>
+    <p>Nesta época especial do ano, gostaríamos de expressar nossa sincera gratidão por escolherem a Rodonaves como seu
+      parceiro logístico. É com grande alegria que celebramos a temporada de Natal, um momento de reflexão, gratidão e
+      alegria.</p>
+    <p>Nossos clientes desempenham um papel fundamental no nosso sucesso, e estamos extremamente agradecidos por
+      confiarem em nós para atender às suas necessidades logísticas. Sabemos que a confiança é conquistada, e
+      trabalhamos incansavelmente para garantir que seus produtos cheguem com segurança e pontualidade ao seu destino.
+    </p>
+    <p>Neste Natal, desejamos a todos vocês e às suas famílias momentos de alegria, paz e harmonia. Que o espírito
+      natalino ilumine seus corações e encha suas vidas de prosperidade.</p>
+    <p>Que o próximo ano seja repleto de oportunidades e desafios que nos permitam continuar a crescer e a servi-los da
+      melhor maneira possível. Estamos ansiosos para enfrentar o futuro ao seu lado, superando obstáculos e construindo
+      um caminho de sucesso.</p>
+    <p>Agradecemos por confiar na Rodonaves e desejamos a todos um Feliz Natal e um Próspero Ano Novo! </p>
+    <p>Com gratidão,</p>
+    <h4>Rodonaves Tranportes e Encomendas</h4>
+    <span id="fechar-banner" onclick="fecharBanner()">&#10006;</span>
+  </div>
+
   <div class="logo">
 
-  </div>
-  
+    <img src="https://4.bp.blogspot.com/-CII-kV4YVOs/TqYxk8uPI9I/AAAAAAAAGcc/OFDb7q_AlJ8/s1600/guirlanda20.gif" alt="" width=320>
+    
+  </div>  
+    
   <h2>Tabela Calçadistas</h2>
   <p id="valido">Válido somente para fretes com origem em Jaú-SP</p>
 
-
   <form id="limparFormulario">
-    <div class="blue-ribbon">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSqeL0tZ8lFRL3YzZvzw5-P5lvz9Rxfp0OZg&usqp=CAU"
-        alt="Novembro Azul" width="150">
-      <p id="novembro-azul-message">Apoiamos o Novembro Azul - Cuidar da saúde é fundamental!</p>
-
-    </div>
-
     <label for="volumes">Quantidade de Volumes:</label>
     <select id="volumes" name="volumes" required>
       <option value="1">1 volume</option>
@@ -270,15 +289,13 @@ th {
     </select>
 
     <label for="peso">Peso Total (KG):</label>
-    <input type="number" id="peso" name="peso" required>
+    <input type="number" id="peso" name="peso" required placeholder="Digite o Peso Kg">
 
     <label for="valorNF">Valor da Nota Fiscal:</label>
-    <input type="number" id="valorNF" name="valorNF" required>
+    <input type="number" id="valorNF" name="valorNF" required placeholder="Digite o Valor da NF R$">
 
     <label for="cnpjDestino">CPF/CNPJ do Destino:</label>
     <input type="number" id="cnpjDestino" name="cnpjDestino" placeholder="Digite CPF/CNPJ do Destino">
-
-
 
     <label for="cidade">Cidade de Destino:</label>
     <input type="text" id="cidade" placeholder="Digite a cidade e a sigla do estado (Ex: Jaú, SP)"
@@ -295,13 +312,13 @@ th {
 
       <button type="button" onclick="calcularFrete()">
         <i class="fas fa-calculator"></i> Calcular Frete
-    </button>
-    
-     </form>
+    </button>  </form>
 
-  <div id="resultado"></div>
+  <div id="resultado">
+    <div id="papai"></div>
+  </div>
  
-  <button type="button" onclick="imprimirResultado()">
+  <button id="print" type="button" onclick="imprimirResultado()">
     <i class="fas fa-print"></i> Imprimir Cotação
 </button>
 
@@ -319,6 +336,9 @@ th {
     <a href="https://instagram.com/rterodonaves?igshid=NTc4MTIwNjQ2YQ==" target="_blank">
       <i class="fab fa-instagram"></i>
     </a>
+
+    <div class="snowflake" style="top: 50px; left: 10%;">❄</div>
+    <div class="snowflake" style="top: 100px; left: 20%;">❄</div>
   </div>
 
 
