@@ -220,16 +220,16 @@ function calcularFrete() {
         3: 68,
         4: 78,
         5: 90,
-        6: 135.07,
-        7: 170.80,
-        8: 202.31,
-        9: 233.81,
-        10: 269.55,
-        11: 301.05,
-        12: 336.79,
-        13: 368.29,
-        14: 404.03,
-        15: 435.53
+        6: 129.96,
+        7: 165.69,
+        8: 197.20,
+        9: 228.70,
+        10: 264.44,
+        11: 295.94,
+        12: 331.68,
+        13: 363.18,
+        14: 398.92,
+        15: 430.42
       },
 
       prazoEntrega: {
@@ -1580,9 +1580,10 @@ function calcularFretePorEstado(estadoFrete, volumes, peso, valorNF, taxa) {
   if (volumes >= 1 && volumes <= 15 && peso <= 1000 && valorNF <= 35000) {
     frete = estadoFrete.valorPorVolume[volumes];
 
-    if (valorNF > 3500 && volumes <= 5) {
+    if (valorNF > 3500) {
       frete += 5.11;
     }
+    
 
     if (peso > 100 && volumes <= 5) {
       frete += 4.23;
