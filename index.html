@@ -18,46 +18,16 @@
 
   <style>
     body {
-      font-family: 'Great Vibes';
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
       text-align: center;
-      background-color: #c8102e;
+      background-color: #f7f7f7;
     }
 
     h2 {
       margin-bottom: 20px;
-      color: white;
-      font-size: 36px;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow {
-      0% {
-        text-shadow: 0 0 10px #c8102e;
-      }
-
-      100% {
-        text-shadow: 0 0 20px #ffcc00;
-      }
-    }
-
-
-    .snowflake {
-      position: absolute;
-      font-size: 42px;
-      color: #ffffff;
-      animation: snow 10s linear infinite;
-    }
-
-    @keyframes snow {
-      0% {
-        transform: translateY(-100vh) rotate(0deg);
-      }
-
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-      }
+      color: #054288;
     }
 
     form {
@@ -68,37 +38,31 @@
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      margin-bottom: 20px;
-
-
     }
 
     label {
       margin-top: 10px;
       display: block;
       font-weight: bold;
-      color: #c8102e;
+      color: #004899;
     }
 
     input[type="number"],
     input[type="text"],
     select {
-      font-family: "Chopin Script";
       padding: 10px;
       border-radius: 5px;
-      border: 2px solid #c8102e;
+      border: 2px solid #004899;
       width: 100%;
       max-width: 300px;
       box-sizing: border-box;
       margin-top: 5px;
-      color: #c8102e;
-
     }
 
     button {
       margin-top: 20px;
       padding: 10px 20px;
-      background-color: #c8102e;
+      background-color: #004899;
       color: white;
       border: none;
       border-radius: 5px;
@@ -108,15 +72,11 @@
 
     #resultado {
       margin-top: 20px;
-      font-size: 18px;
-      background-color: white;
-      color: #c8102e;
+      font-size: 20px;
+      background-color: #004899;
+      color: white;
       border-radius: 5px;
       padding: 5px;
-      background-image: url(https://i.pinimg.com/564x/39/e0/e8/39e0e84afe953aa21ea3b70dafb8479e.jpg);
-      background-size: contain;
-      font-family: 'Great Vibes', cursive;
-      font-weight: bold;/
     }
 
     #cidade {
@@ -125,24 +85,24 @@
     }
 
     #observacao {
-      color: white;
+      color: #777;
       margin-top: 10px;
       font-size: small;
     }
 
     #valido {
-      font-size: 15px;
+      font-size: 14px;
       padding: 5px;
-      color: white;
+      color: #777;
     }
 
     .logo {
-      width: 100%;
+      background-image: url(./rte.png);
+      width: 320px;
+      height: 55px;
+      background-repeat: no-repeat;
+      background-size: contain;
       margin: auto;
-      margin-top: -25px;
-      height: 180px;
-
-
     }
 
     .icon {
@@ -156,7 +116,7 @@
     .icon a {
       margin: 10px;
       text-decoration: none;
-      color: white;
+      color: #004899;
       transition: color 0.3s;
     }
 
@@ -176,141 +136,35 @@
     .icon a {
       margin: 10px;
       text-decoration: none;
-      color: white;
+      color: #004899;
     }
 
     .icon a:hover {
       color: #080808;
     }
-  </style>
-  <style>
-    #banner {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 85%;
-      height: 91%;
-      margin: 10px;
-      border-radius: 10px;
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #c8102e;
-      text-align: center;
-      padding: 20px;
-      z-index: 9999;
-      display: none;
-      font-size: 15px;
-      overflow: scroll;
+
+    .logo {
+
+      background-image: url(./rte.png);
+      width: 320px;
+      height: 55px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin: auto;
     }
-
-    #fechar-banner {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 24px;
-      cursor: pointer;
-      color: #c8102e;
-    }
-
-    #print {
-
-      background-color: white;
-      color: #c8102e;
-    }
-
-    option {
-
-      color: #c8102e;
-
-    }
-
-    ::placeholder {
-
-      color: #c8102e;
-      text-align: center;
-    }
-  </style>
-
-  <style>
-    /* Estilo para o modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(255, 255, 0, 0.8);
-    }
-
-    .modal-content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 24px;
-      color: #c8102e;
-      cursor: pointer;
-    }
-
-
   </style>
 
 </head>
 
-<body>
+<body>  
 
-  <div id="lembrete-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="fecharLembrete()">&times;</span>
-      <h2 style="color: #c8102e;">Atenção!</h2>
-      <p style="color: #c8102e;">Durante o mês de dezembro,não considerar os prazos padrões informados. Agradecemos a
-        sua compreensão.</p>
-    </div>
-  </div>
 
   
-
-
-  <img src="./logo sem fundo.png" alt="" width="330">
-  <div id="banner" style="text-align: justify;">
-    <h3>Feliz Natal</h3>
-
-
-
-    <h4>Queridos Clientes</h4>
-    <p>Nesta época especial do ano, gostaríamos de expressar nossa sincera gratidão por escolherem a Rodonaves como seu
-      parceiro logístico. É com grande alegria que celebramos a temporada de Natal, um momento de reflexão, gratidão e
-      alegria.</p>
-    <p>Nossos clientes desempenham um papel fundamental no nosso sucesso, e estamos extremamente agradecidos por
-      confiarem em nós para atender às suas necessidades logísticas. Sabemos que a confiança é conquistada, e
-      trabalhamos incansavelmente para garantir que seus produtos cheguem com segurança e pontualidade ao seu destino.
-    </p>
-    <p>Neste Natal, desejamos a todos vocês e às suas famílias momentos de alegria, paz e harmonia. Que o espírito
-      natalino ilumine seus corações e encha suas vidas de prosperidade.</p>
-    <p>Que o próximo ano seja repleto de oportunidades e desafios que nos permitam continuar a crescer e a servi-los da
-      melhor maneira possível. Estamos ansiosos para enfrentar o futuro ao seu lado, superando obstáculos e construindo
-      um caminho de sucesso.</p>
-    <p>Agradecemos por confiar na Rodonaves e desejamos a todos um Feliz Natal e um Próspero Ano Novo! </p>
-    <p>Com gratidão,</p>
-    <h4>Rodonaves Tranportes e Encomendas</h4>
-    <span id="fechar-banner" onclick="fecharBanner()">&#10006;</span>
   </div>
 
   <div class="logo">
 
-    <img src="https://4.bp.blogspot.com/-CII-kV4YVOs/TqYxk8uPI9I/AAAAAAAAGcc/OFDb7q_AlJ8/s1600/guirlanda20.gif" alt=""
-      width=320>
-
+    
   </div>
 
   <h2>Tabela Calçadistas</h2>
@@ -389,9 +243,6 @@
     <a href="https://instagram.com/rterodonaves?igshid=NTc4MTIwNjQ2YQ==" target="_blank">
       <i class="fab fa-instagram"></i>
     </a>
-
-    <div class="snowflake" style="top: 50px; left: 10%;">❄</div>
-    <div class="snowflake" style="top: 100px; left: 20%;">❄</div>
   </div>
 
 
@@ -425,16 +276,10 @@
       janelaImpressao.open();
 
       
-    }
+    };
 
-
-
-    
 
   </script>
-
- 
-
 
 </body>
 
