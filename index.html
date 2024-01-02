@@ -286,6 +286,11 @@
       color: #004899;
       font-weight: bold;
     }
+
+    textarea{
+
+      width: 100%;
+    }
   </style>
 
 </head>
@@ -313,19 +318,21 @@
         <span class="modal-label">Localização</span>
       </div>
 
-      <div class="modal-item" onclick="openInfoModal('transportadora')">
-        <span class="modal-icon">&#x1F69A;</span>
-        <span class="modal-label">Transportadora</span>
-      </div>
-      <div class="modal-item" onclick="openInfoModal('email')">
-        <span class="modal-icon">&#x1F4E7;</span>
-        <span class="modal-label">E-mail</span>
-      </div>
       <div class="modal-item" onclick="mostrarHistorico('historico')">
         <span class="modal-icon">&#x1F4DD;</span>
         <span class="modal-label">Histórico</span>
       </div>
+      <div class="modal-item" onclick="abrirSugestoes()">
+        <span class="modal-icon">&#x1F4A1;</span>
+        <span class="modal-label">Sugestões</span>
     </div>
+    
+      <div class="modal-item" onclick="openInfoModal('email')">
+        <span class="modal-icon">&#x1F4E7;</span>
+        <span class="modal-label">E-mail</span>
+      </div>
+     
+     
   </div>
 
   </div>
@@ -413,6 +420,45 @@
       <p>E-mail: <a href="mailto:comercial2.304@rte.com.br">comercial2.304@rte.com.br</a></p>
     </div>
   </div>
+
+  <div id="sugestoes" class="info-modal" style="display: none;">
+    <div class="close-info-btn" onclick="closeInfoModal()">X</div>
+    <h3>Sugestões</h3>
+    <p>Deixe sua sugestão para melhorarmos nosso aplicativo:</p>
+    <textarea id="sugestaoInput" rows="4" cols="50" placeholder="Digite sua sugestão aqui"></textarea>
+    <button onclick="enviarSugestao()">Enviar Sugestão</button>
+</div>
+
+<script>
+  function abrirSugestoes() {
+      document.getElementById('sugestoes').style.display = 'block';
+  }
+
+  function closeSugestoes() {
+      document.getElementById('sugestoes').style.display = 'none';
+  }
+
+  function enviarSugestao() {
+      var sugestao = document.getElementById('sugestaoInput').value;
+      if (sugestao.trim() !== "") {
+          var mensagem = 'Nova sugestão: ' + sugestao;
+          enviarWhatsApp(mensagem);
+          closeSugestoes(); // Fechar a janela após enviar a sugestão (opcional)
+      } else {
+          alert('Por favor, digite sua sugestão antes de enviar.');
+      }
+  }
+
+  function enviarWhatsApp(mensagem) {
+      // Substitua o número abaixo pelo seu número de WhatsApp
+      var numeroWhatsApp = '14998577463';
+      var linkWhatsApp = 'https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(mensagem);
+      window.open(linkWhatsApp, '_blank');
+  }
+</script>
+
+
+
 
 
 
