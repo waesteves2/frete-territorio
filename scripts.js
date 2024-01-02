@@ -7,6 +7,7 @@ function calcularFrete() {
   var cepSP = document.getElementById("cepSP").value;
   var cepRJ = document.getElementById("cepRJ").value;
 
+
   var frete = 0;
   var telefone = "14-21042600";
   if (cidade.toLowerCase() === "sao paulo sp" && cepSP === "") {
@@ -1541,7 +1542,26 @@ function calcularFrete() {
   }
 
   exibirResultadoFrete(frete, cidade, estadoFrete);
+
+  var historicoCotacoes = JSON.parse(localStorage.getItem('historicoCotacoes')) || [];
+
+  // Salvar as informações no histórico
+  var historicoItem = {
+    volumes: document.getElementById('volumes').value,
+    pesoTotal: document.getElementById('peso').value,
+    valorNF: document.getElementById('valorNF').value,
+    cnpjDestino: document.getElementById('cnpjDestino').value,
+    cidadeDestino: document.getElementById('cidade').value,
+    resultadoFrete: document.getElementById('resultado').innerText
+  };
+
+  historicoCotacoes.push(historicoItem);
+
+  // Salvar o histórico no Local Storage
+  localStorage.setItem('historicoCotacoes', JSON.stringify(historicoCotacoes));
 }
+
+
 
 function calcularFretePorCEP(volumes, peso, valorNF, limiteVolumes, acrescimoValorNF, acrescimoPeso) {
   if (volumes >= 1 && volumes <= limiteVolumes) {
