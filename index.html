@@ -25,7 +25,8 @@
       background-color: #f7f7f7;
     }
 
-    h2 {
+    h2,
+    h3 {
       margin-bottom: 20px;
       color: #054288;
     }
@@ -97,9 +98,7 @@
     }
 
     .logo {
-      background-image: url(./rte.png);
-      width: 320px;
-      height: 55px;
+      background-image: url();
       background-repeat: no-repeat;
       background-size: contain;
       margin: auto;
@@ -145,26 +144,420 @@
 
     .logo {
 
-      background-image: url(./rte.png);
-      width: 320px;
-      height: 55px;
+      background-image: url();
       background-repeat: no-repeat;
       background-size: contain;
       margin: auto;
     }
   </style>
 
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    #menu-icon {
+      cursor: pointer;
+      font-size: 24px;
+      margin: 10px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 2;
+      /* Garante que o ícone do menu fique acima do modal */
+      color: #004899;
+    }
+
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    #modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+      width: 80%;
+      max-width: 400px;
+      height: auto;
+    }
+
+    .modal-item {
+      cursor: pointer;
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .modal-icon {
+      font-size: 36px;
+      margin-right: 10px;
+    }
+
+    .modal-label {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+
+    #close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 18px;
+      color: #ff3333;
+      cursor: pointer;
+    }
+
+    .modal-icon {
+      cursor: pointer;
+      font-size: 36px;
+      margin: 10px;
+      display: inline;
+
+    }
+
+    .info-modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #f7f7f7;
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 3;
+      color: black;
+      width: 80%;
+      height: 90%;
+      overflow-y: auto;
+    }
+
+    #close-info-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 18px;
+      color: #ff3333;
+      cursor: pointer;
+    }
+
+
+
+    #info-contatos {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .close-info-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 18px;
+      color: #ff3333;
+      cursor: pointer;
+    }
+
+    .contato-item {
+      margin: 10px 0;
+    }
+
+    .contato-label {
+      display: inline-block;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .contato-link {
+      text-decoration: none;
+      color: #004899;
+      font-weight: bold;
+    }
+  </style>
+
 </head>
 
-<body>  
+<body>
 
 
-  
+
   </div>
 
-  <div class="logo">
+  <div id="menu-icon" onclick="toggleModal()">&#9776;</div>
+  <div id="modal">
+    <div id="modal-content" style="color: #054288;">
+      <div id="close-btn" onclick="toggleModal()">X</div>
+      <div class="modal-item" onclick="openInfoModal('empresa')">
+        <span class="modal-icon">&#x1F3E2;</span>
+        <span class="modal-label">Empresa</span>
+      </div>
+      <div class="modal-item" onclick="openInfoModal('contatos')">
+        <span class="modal-icon">&#x1F4DE;</span>
+        <span class="modal-label">Contatos</span>
+      </div>
+      <div class="modal-item" onclick="window.open('https://maps.app.goo.gl/1pW6DMXV5BGVF8Cs8', '_blank')">
+        <span class="modal-icon">&#x1F4CD;</span>
+        <span class="modal-label">Localização</span>
+      </div>
 
-    
+      <div class="modal-item" onclick="openInfoModal('transportadora')">
+        <span class="modal-icon">&#x1F69A;</span>
+        <span class="modal-label">Transportadora</span>
+      </div>
+      <div class="modal-item" onclick="openInfoModal('email')">
+        <span class="modal-icon">&#x1F4E7;</span>
+        <span class="modal-label">E-mail</span>
+      </div>
+      <div class="modal-item" onclick="mostrarHistorico('historico')">
+        <span class="modal-icon">&#x1F4DD;</span>
+        <span class="modal-label">Histórico</span>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <div id="info-historico" class="info-modal">
+    <h2 id="histo">Histórico de Cotações</h2>
+    <div id="close-info-btn" onclick="closeInfoModal()">X</div>
+    <div class="modal-icon" onclick="mostrarHistorico('historico')">&#x1F4DD;</div> <!-- Ícone de histórico -->
+    <span style="color: #080808;">Histórico</span>
+  </div>
+
+
+  <div id="info-contatos" class="info-modal">
+    <div class="close-info-btn" onclick="closeInfoModal()">X</div>
+    <div class="contato-item">
+      <span class="contato-label">Telefone Fixo:</span>
+      <i class="fas fa-phone"></i>
+      <a class="contato-link" href="tel:1421042600">14-2104 2600</a>
+    </div>
+
+    <div class="contato-item">
+      <span class="contato-label">Whatsapp:</span>
+      <a class="contato-link" href="https://wa.me/5514998577463" target="_blank">
+        <img src="https://seeklogo.com/images/W/whatsapp-icon-logo-BDC0A8063B-seeklogo.com.png" alt="Ícone do WhatsApp"
+          width="20">
+        (14) 99857-7463
+      </a>
+    </div>
+  </div>
+
+  <div id="info-empresa" class="info-modal">
+    <div class="close-info-btn" onclick="closeInfoModal()">X</div>
+    <img src="./rte.png" alt="" width="250">
+    <div style="text-align: left; margin: 10px;">
+      <p><strong>Razão Social:</strong>Rodonaves Transportes Encomendas LTDA</p>
+      <p><strong>CNPJ:</strong> 44.914.992/0001-38</p>
+      <p><strong>Endereço:</strong> Rua General Augusto Soares dos Santos, 550, Parque Industrial Lagoinha</p>
+      <p><strong>Cidade | Estado:</strong> Ribeirão Preto | SP</p>
+      <p><strong>CEP:</strong> 14095-240</p>
+      <p><strong>Telefones:</strong> (16) 2101-9900</p>
+      <img src="https://lh5.googleusercontent.com/p/AF1QipPzaJM0TLhL42gU_dOhJS_ZPHp5ogovmeFrXyjZ=w408-h252-k-no" alt=""
+        width="270">
+      <p><strong>Google Maps:</strong> <a href="https://maps.app.goo.gl/716hYoAdt9ZVZTVD6" target="_blank">Veja no
+          Mapa</a></p>
+
+    </div>
+  </div>
+
+  <div id="info-email" class="info-modal">
+    <div class="close-info-btn" onclick="closeInfoModal()">X</div>
+    <h3>E-mails dos Colaboradores</h3>
+
+    <div class="email-item">
+      <span class="email-icon">&#x1F4E7;</span>
+      <h3>E-mail Gerente Adm</h3>
+      <p>E-mail: <a href="mailto:rte304@rte.com.br">rte304@rte.com.br</a></p>
+    </div>
+
+    <div class="email-item">
+      <span class="email-icon">&#x1F4E7;</span>
+      <h3>E-mail para Coletas</h3>
+      <p>E-mail: <a href="mailto:coletareversa@rte.com.br">coletareversa@rte.com.br</a></p>
+    </div>
+
+    <div class="email-item">
+      <span class="email-icon">&#x1F4E7;</span>
+      <h3>E-mail para Pesquisa</h3>
+      <p>E-mail: <a href="mailto:pesquisa.304@rte.com.br">pesquisa.304@rte.com.br</a></p>
+    </div>
+
+    <div class="email-item">
+      <span class="email-icon">&#x1F4E7;</span>
+      <h3>E-mail para Pesquisa 2</h3>
+      <p>E-mail: <a href="mailto:pesquisa2.304@rte.com.br">pesquisa2.304@rte.com.br</a></p>
+    </div>
+
+    <div class="email-item">
+      <span class="email-icon">&#x1F4E7;</span>
+      <h3>E-mail para Comercial</h3>
+      <p>E-mail: <a href="mailto:comercial.304@rte.com.br">comercial.304@rte.com.br</a></p>
+    </div>
+
+    <div class="email-item">
+      <span class="email-icon">&#x1F4E7;</span>
+      <h3>E-mail para Comercial 2</h3>
+      <p>E-mail: <a href="mailto:comercial2.304@rte.com.br">comercial2.304@rte.com.br</a></p>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <script>
+    function mostrarHistorico() {
+      var infoModal = document.getElementById('info-historico');
+      var historicoContent = document.createElement('div');
+
+      historicoContent.style.textAlign = 'left';
+      historicoContent.style.marginLeft = '10px';
+      historicoContent.style.fontSize = 'small';
+
+      historicoContent.innerHTML = '<h2>Histórico de Cotações</h2>';
+
+      var historicoCotacoes = JSON.parse(localStorage.getItem('historicoCotacoes')) || [];
+
+      if (historicoCotacoes.length > 0) {
+        historicoCotacoes.forEach(function (item, index) {
+          historicoContent.innerHTML += '<p>Cotação: ' + (index + 1) + '</p>';
+          historicoContent.innerHTML += '<p><strong>Volumes:</strong> ' + item.volumes + '</p>';
+          historicoContent.innerHTML += '<p><strong>Peso:</strong> ' + item.pesoTotal + '</p>';
+          historicoContent.innerHTML += '<p><strong>Valor da NF:</strong> ' + item.valorNF + '</p>';
+          historicoContent.innerHTML += '<p><strong>CNPJ do Destino:</strong> ' + item.cnpjDestino + '</p>';
+          historicoContent.innerHTML += '<p><strong>Cidade de Destino:</strong> ' + item.cidadeDestino + '</p>';
+          historicoContent.innerHTML += '<p><strong>Frete:</strong> ' + item.resultadoFrete + '</p>';
+          historicoContent.innerHTML += '<input type="checkbox" id="cotação-' + index + '" class="selecionar-cotacao"> Selecionar para Impressão';
+          historicoContent.innerHTML += '<hr>';
+        });
+
+        historicoContent.innerHTML += '<button onclick="imprimirCotacoesSelecionadas()"><i class="fas fa-print"></i> Imprimir Cotações </button>';
+      } else {
+        historicoContent.innerHTML += '<p>Nenhum histórico disponível.</p>';
+      }
+
+      infoModal.innerHTML = '';
+      infoModal.appendChild(historicoContent);
+
+      var closeButton = document.createElement('div');
+      closeButton.id = 'close-info-btn';
+      closeButton.textContent = 'X';
+      closeButton.onclick = closeInfoModal;
+
+      infoModal.appendChild(closeButton);
+
+      infoModal.style.display = 'block';
+
+      var ultimaLimpeza = localStorage.getItem('ultimaLimpezaHistorico');
+      if (!ultimaLimpeza || (Date.now() - parseInt(ultimaLimpeza)) > (20 * 24 * 60 * 60 * 1000)) {
+        localStorage.removeItem('historicoCotacoes');
+        localStorage.setItem('ultimaLimpezaHistorico', Date.now());
+      }
+    }
+
+    function imprimirCotacoesSelecionadas() {
+      var historicoCotacoes = JSON.parse(localStorage.getItem('historicoCotacoes')) || [];
+      var cotacoesSelecionadas = [];
+
+      var checkboxes = document.getElementsByClassName('selecionar-cotacao');
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          cotacoesSelecionadas.push(i);
+        }
+      }
+
+      if (cotacoesSelecionadas.length > 0) {
+        var conteudoImpressao = '';
+
+        cotacoesSelecionadas.forEach(function (index) {
+          var cotacao = historicoCotacoes[index];
+          conteudoImpressao += '<h2>Cotação: ' + (index + 1) + '</h2>' +
+            '<p><strong>Volumes:</strong> ' + cotacao.volumes + '</p>' +
+            '<p><strong>Peso:</strong> ' + cotacao.pesoTotal + '</p>' +
+            '<p><strong>Valor da NF:</strong> ' + cotacao.valorNF + '</p>' +
+            '<p><strong>CNPJ do Destino:</strong> ' + cotacao.cnpjDestino + '</p>' +
+            '<p><strong>Cidade de Destino:</strong> ' + cotacao.cidadeDestino + '</p>' +
+            '<p><strong>Resultado do Frete:</strong> ' + cotacao.resultadoFrete + '</p>' +
+            '<hr>';
+        });
+
+        var janelaImpressao = window.open('', '_blank');
+        janelaImpressao.document.write(conteudoImpressao);
+        janelaImpressao.document.close();
+        janelaImpressao.print();
+      } else {
+        alert('Selecione pelo menos uma cotação para imprimir.');
+      }
+    }
+
+    function openInfoModal(type) {
+      var infoModal = document.getElementById('info-' + type);
+      infoModal.style.display = 'block';
+
+      if (type === 'historico') {
+        mostrarHistorico();
+      }
+    }
+
+    function closeInfoModal() {
+      var infoModal = document.getElementById('info-historico');
+      infoModal.style.display = 'none';
+    }
+
+  </script>
+
+
+  <script>
+    function toggleModal() {
+      var modal = document.getElementById('modal');
+      modal.style.display = (modal.style.display === 'none' || modal.style.display === '') ? 'flex' : 'none';
+    }
+
+    function openInfoModal(type) {
+      var infoModal = document.getElementById('info-' + type);
+      infoModal.style.display = 'block';
+    }
+
+    function closeInfoModal() {
+      var infoModals = document.querySelectorAll('.info-modal');
+      infoModals.forEach(function (modal) {
+        modal.style.display = 'none';
+      });
+    }
+  </script>
+
+  <script>
+    function toggleModal() {
+      var modal = document.getElementById('modal');
+      modal.style.display = (modal.style.display === 'none' || modal.style.display === '') ? 'flex' : 'none';
+    }
+  </script>
+
+  <br>
+
+  <div class="logo">
+    <a href="https://www.rte.com.br" target="_blank">
+
+      <img src="rte.png" alt="campuscode logo" width=320 height>
+    </a>
   </div>
 
   <h2>Tabela Calçadistas</h2>
@@ -275,7 +668,7 @@
       janelaImpressao.document.close();
       janelaImpressao.open();
 
-      
+
     };
 
 
