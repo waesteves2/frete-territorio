@@ -156,7 +156,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      overflow:scroll;
+      overflow: scroll;
     }
 
     #menu-icon {
@@ -287,7 +287,7 @@
       font-weight: bold;
     }
 
-    textarea{
+    textarea {
 
       width: 100%;
     }
@@ -325,15 +325,22 @@
       <div class="modal-item" onclick="abrirSugestoes()">
         <span class="modal-icon">&#x1F4A1;</span>
         <span class="modal-label">Sugestões</span>
-    </div>
-    
+      </div>
+
       <div class="modal-item" onclick="openInfoModal('email')">
         <span class="modal-icon">&#x1F4E7;</span>
         <span class="modal-label">E-mail</span>
       </div>
-     
-     
-  </div>
+      <a href="https://waesteves2.github.io/Declaracao-304-RTE/" target="_blank">
+        <div class="modal-item">
+          <span class="modal-icon">&#x1F4C4;</span>
+          <span class="modal-label">Declaração de Conteúdo</span>
+        </div>
+      </a>
+
+
+
+    </div>
 
   </div>
   <div id="info-historico" class="info-modal">
@@ -427,35 +434,39 @@
     <p>Deixe sua sugestão para melhorarmos nosso aplicativo:</p>
     <textarea id="sugestaoInput" rows="4" cols="50" placeholder="Digite sua sugestão aqui"></textarea>
     <button onclick="enviarSugestao()">Enviar Sugestão</button>
-</div>
+  </div>
 
-<script>
-  function abrirSugestoes() {
+
+
+
+
+  <script>
+    function abrirSugestoes() {
       document.getElementById('sugestoes').style.display = 'block';
-  }
+    }
 
-  function closeSugestoes() {
+    function closeSugestoes() {
       document.getElementById('sugestoes').style.display = 'none';
-  }
+    }
 
-  function enviarSugestao() {
+    function enviarSugestao() {
       var sugestao = document.getElementById('sugestaoInput').value;
       if (sugestao.trim() !== "") {
-          var mensagem = 'Nova sugestão: ' + sugestao;
-          enviarWhatsApp(mensagem);
-          closeSugestoes(); // Fechar a janela após enviar a sugestão (opcional)
+        var mensagem = 'Nova sugestão: ' + sugestao;
+        enviarWhatsApp(mensagem);
+        closeSugestoes(); // Fechar a janela após enviar a sugestão (opcional)
       } else {
-          alert('Por favor, digite sua sugestão antes de enviar.');
+        alert('Por favor, digite sua sugestão antes de enviar.');
       }
-  }
+    }
 
-  function enviarWhatsApp(mensagem) {
+    function enviarWhatsApp(mensagem) {
       // Substitua o número abaixo pelo seu número de WhatsApp
       var numeroWhatsApp = '14998577463';
       var linkWhatsApp = 'https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(mensagem);
       window.open(linkWhatsApp, '_blank');
-  }
-</script>
+    }
+  </script>
 
 
 
