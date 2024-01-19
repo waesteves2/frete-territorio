@@ -479,7 +479,7 @@ function calcularFrete() {
 
     "gd": {
       cidades: [
-        "guarulhos sp", , "sao paulo sp", , "aruja sp", , "biritiba-mirim sp", , "ferraz de vasconcelos sp", , "itaquaquecetuba sp", , "mairipora sp", , "maua sp", , "mogi das cruzes sp", , "poa sp", , "ribeirao pires sp", , "rio grande da serra sp", , "salesopolis sp", , "santa isabel sp", , "santo andre sp", , "suzano sp", , "santo andre sp", "aracariguama sp", , "barueri sp", , "caieiras sp", , "carapicuiba sp", , "cotia sp", , "diadema sp", , "embu das artes sp", , "embu-guacu sp", , "francisco morato sp", , "franco da rocha sp", , "itapecerica da serra sp", , "itapevi sp", , "jandira sp", , "juquitiba sp", , "osasco sp", , "pirapora do bom jesus sp", , "santana de parnaiba sp", , "sao bernardo do campo sp", , "sao caetano do sul sp", "taboao da serra sp", , "vargem grande paulista sp",
+        "guarulhos sp", , "sao paulo sp", , "aruja sp", , "biritiba-mirim sp", , "ferraz de vasconcelos sp", , "itaquaquecetuba sp", , "mairipora sp", , "maua sp", , "mogi das cruzes sp", , "poa sp", , "ribeirao pires sp", , "rio grande da serra sp", , "salesopolis sp", , "santa isabel sp", , "santo andre sp", , "suzano sp", , "santo andre sp", "aracariguama sp", , "barueri sp", , "caieiras sp", , "carapicuiba sp", , "cotia sp", , "diadema sp", , "embu das artes sp", , "embu-guacu sp", , "francisco morato sp", , "franco da rocha sp", , "itapecerica da serra sp", , "itapevi sp", , "jandira sp" , "osasco sp", , "pirapora do bom jesus sp", , "santana de parnaiba sp", , "sao bernardo do campo sp", , "sao caetano do sul sp", "taboao da serra sp", , "vargem grande paulista sp",
       ],
       valorPorVolume: {
         1: 70,
@@ -1073,21 +1073,21 @@ function calcularFrete() {
       ],
       valorPorVolume: {
 
-        1: 118.97,
-        2: 128.97,
-        3: 138.97,
-        4: 148.97,
-        5: 160.97,
-        6: 206.05,
-        7: 241.78,
-        8: 273.29,
-        9: 304.79,
-        10: 340.53,
-        11: 372.03,
-        12: 407.72,
-        13: 439.27,
-        14: 475.01,
-        15: 506.51
+        1: 125.80,
+        2: 135.80,
+        3: 145.80,
+        4: 155.80,
+        5: 167.80,
+        6: 207.77,
+        7: 243.50,
+        8: 275.01,
+        9: 306.51,
+        10: 342.25,
+        11: 373.75,
+        12: 409.48,
+        13: 440.98,
+        14: 476.72,
+        15: 508.22
       },
       prazoEntrega: {
         "sao lourenco da serra sp": 6,"juquitiba sp": 6
