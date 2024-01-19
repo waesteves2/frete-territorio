@@ -479,7 +479,7 @@ function calcularFrete() {
 
     "gd": {
       cidades: [
-        "guarulhos sp", , "sao paulo sp", , "aruja sp", , "biritiba-mirim sp", , "ferraz de vasconcelos sp", , "itaquaquecetuba sp", , "mairipora sp", , "maua sp", , "mogi das cruzes sp", , "poa sp", , "ribeirao pires sp", , "rio grande da serra sp", , "salesopolis sp", , "santa isabel sp", , "santo andre sp", , "suzano sp", , "santo andre sp", , "juquitiba sp", , "aracariguama sp", , "barueri sp", , "caieiras sp", , "carapicuiba sp", , "cotia sp", , "diadema sp", , "embu das artes sp", , "embu-guacu sp", , "francisco morato sp", , "franco da rocha sp", , "itapecerica da serra sp", , "itapevi sp", , "jandira sp", , "juquitiba sp", , "osasco sp", , "pirapora do bom jesus sp", , "santana de parnaiba sp", , "sao bernardo do campo sp", , "sao caetano do sul sp", "taboao da serra sp", , "vargem grande paulista sp",
+        "guarulhos sp", , "sao paulo sp", , "aruja sp", , "biritiba-mirim sp", , "ferraz de vasconcelos sp", , "itaquaquecetuba sp", , "mairipora sp", , "maua sp", , "mogi das cruzes sp", , "poa sp", , "ribeirao pires sp", , "rio grande da serra sp", , "salesopolis sp", , "santa isabel sp", , "santo andre sp", , "suzano sp", , "santo andre sp", "aracariguama sp", , "barueri sp", , "caieiras sp", , "carapicuiba sp", , "cotia sp", , "diadema sp", , "embu das artes sp", , "embu-guacu sp", , "francisco morato sp", , "franco da rocha sp", , "itapecerica da serra sp", , "itapevi sp", , "jandira sp", , "juquitiba sp", , "osasco sp", , "pirapora do bom jesus sp", , "santana de parnaiba sp", , "sao bernardo do campo sp", , "sao caetano do sul sp", "taboao da serra sp", , "vargem grande paulista sp",
       ],
       valorPorVolume: {
         1: 70,
@@ -1069,7 +1069,7 @@ function calcularFrete() {
 
     "sptx": {
       cidades: [
-        "sao lourenco da serra sp"
+        "sao lourenco da serra sp","juquitiba sp"
       ],
       valorPorVolume: {
 
@@ -1090,7 +1090,7 @@ function calcularFrete() {
         15: 506.51
       },
       prazoEntrega: {
-        "sao lourenco da serra sp": 6,
+        "sao lourenco da serra sp": 6,"juquitiba sp": 6
       }
 
     },
