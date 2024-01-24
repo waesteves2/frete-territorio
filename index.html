@@ -293,9 +293,66 @@
     }
   </style>
 
+  <style>
+  /* Estilo atualizado para o modal de ajuste na tabela */
+  #modalAjuste {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 72, 153, 0.9); /* Cor azulada com transparência */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 3;
+    color: #333;
+    width: 78%;
+    height: 85%;
+    max-width: 400px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    background-image: url(https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDRvYzF5Nm5jaWY4dWk5eXVwdmxnaXlwOGNvdWt5bzEzbG5yZGRzciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/YT3NlKGv1gjs6Ut0iv/giphy.gif);
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+
+
+ #modalAjuste h3 {
+    color: #e70c0c; /* Cor do texto branco */
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  #modalAjuste p {
+    margin: 10px 0;
+    color: #fff; /* Cor do texto branco */
+    font-size: 18px;
+  }
+
+ 
+
+  #modalAjuste .close-info-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    color: #ff3333;
+    cursor: pointer;
+  }
+</style>
+
+
 </head>
 
 <body>
+
+   <div id="modalAjuste" class="info-modal">
+    <div class="close-info-btn" onclick="fecharModalAjusteTabela()">X</div>
+    <h3>ATENÇÃO</h3>
+    <p>A Tabela Território sofrerá ajustes de valores a partir do dia 26/01/2024.</p>
+    
+  </div>
 
 
 
@@ -657,7 +714,7 @@
     <div id="cidade-list"></div>
 
     <label id="cepSPLabel" style="display: none;">CEP São Paulo:</label>
-    <input type="text" id="cepSP" style="display: none;" onkeyup="formatarCEP('cepSP')"
+    <input type="text" id="cepSP" style="display:none;" onkeyup="formatarCEP('cepSP')"
       placeholder="Digite o CEP do Destino">
 
     <label id="cepRJLabel" style="display: none;">CEP NITEROI RJ:</label>
@@ -730,6 +787,27 @@
 
 
   </script>
+
+
+<script>
+  // Função para exibir o modal ao carregar a página
+  window.onload = function() {
+    abrirModalAjusteTabela();
+  };
+
+  // Função para abrir o modal de ajuste na tabela
+  function abrirModalAjusteTabela() {
+    var modalAjuste = document.getElementById('modalAjuste');
+    modalAjuste.style.display = 'block';
+  }
+
+  // Função para fechar o modal de ajuste na tabela
+  function fecharModalAjusteTabela() {
+    var modalAjuste = document.getElementById('modalAjuste');
+    modalAjuste.style.display = 'none';
+  }
+</script>
+
 
 </body>
 
