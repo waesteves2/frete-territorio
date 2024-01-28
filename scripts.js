@@ -244,7 +244,7 @@ function calcularFrete() {
       ],
       valorPorVolume: {
 
-        1: 105,96,
+        1: 105.96,
         2: 116.93,
         3: 127.89,
         4: 138.86,
