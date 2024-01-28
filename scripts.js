@@ -99,7 +99,7 @@ function calcularFrete() {
     }
 
     if (valorNF > 3500) {
-      frete += 5.11;
+      frete += 5.60;
     }
   } else {
   }
@@ -128,60 +128,60 @@ function calcularFrete() {
   if (cepsAceitaveis2.includes(cepRJ)) {
     switch (volumes) {
       case 1:
-        frete = 194.61;
+        frete = 211.17;
         break;
       case 2:
-        frete = 205.70;
+        frete = 223.32;
         break;
       case 3:
-        frete = 219.01;
+        frete = 237.92;
         break;
       case 4:
-        frete = 250.05;
+        frete = 271.95;
         break;
       case 5:
-        frete = 287.76;
+        frete = 313.28;
         break;
       case 6:
-        frete = 377.84;
+        frete = 402.13;
         break;
       case 7:
-        frete = 449.87;
+        frete = 481.10;
         break;
       case 8:
-        frete = 521.90;
+        frete = 550.18;
         break;
       case 9:
-        frete = 584.92;
+        frete = 619.26;
         break;
       case 10:
-        frete = 656.95;
+        frete = 698.22;
         break;
       case 11:
-        frete = 728.98;
+        frete = 767.30;
         break;
       case 12:
-        frete = 792.00;
+        frete = 846.27;
         break;
       case 13:
-        frete = 864.03;
+        frete = 915.35;
         break;
       case 14:
-        frete = 936.06;
+        frete = 994.31;
         break;
       case 15:
-        frete = 999.07;
+        frete = 1063.39;
         break;
       default:
         break;
     }
 
     if (peso > 100) {
-      frete += 4.23;
+      frete += 22.04;
     }
 
     if (valorNF > 3500) {
-      frete += 5.11;
+      frete += 5.60;
     }
   } else {
   }
