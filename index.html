@@ -730,6 +730,47 @@
 
   </script>
 
+  <script>
+  // Função para pular para o próximo campo ao pressionar "Enter"
+  function pularProximoCampo(event, campoAtual, proximoCampo) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById(proximoCampo).focus();
+    }
+  }
+
+  // Atribua a função aos campos de input
+  document.getElementById('volumes').addEventListener('keydown', function (event) {
+    pularProximoCampo(event, 'volumes', 'valorNF');
+  });
+
+  document.getElementById('valorNF').addEventListener('keydown', function (event) {
+    pularProximoCampo(event, 'valorNF', 'peso');
+  });
+
+  document.getElementById('peso').addEventListener('keydown', function (event) {
+    pularProximoCampo(event, 'peso', 'cnpjDestino');
+  });
+
+  document.getElementById('cnpjDestino').addEventListener('keydown', function (event) {
+    pularProximoCampo(event, 'cnpjDestino', 'cidade');
+  });
+
+  document.getElementById('cidade').addEventListener('keydown', function (event) {
+    pularProximoCampo(event, 'cidade', 'cepSP');
+  });
+
+  document.getElementById('cepSP').addEventListener('keydown', function (event) {
+    pularProximoCampo(event, 'cepSP', 'cepRJ');
+  });
+
+  // Adicione mais campos se necessário
+
+  document.getElementById('cepRJ').addEventListener('keydown', function (event) {
+    pularProximoCampo(event, 'cepRJ', 'calcularFrete');
+  });
+</script>
+
 
 
 </body>
