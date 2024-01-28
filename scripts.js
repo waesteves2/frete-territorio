@@ -46,49 +46,49 @@ function calcularFrete() {
   if (cepsAceitaveis.includes(cepSP)) {
     switch (volumes) {
       case 1:
-        frete = 103.75;
+        frete = 107.94;
         break;
       case 2:
-        frete = 113.75;
+        frete = 118.90;
         break;
       case 3:
-        frete = 123.75;
+        frete = 129.87;
         break;
       case 4:
-        frete = 133.75;
+        frete = 140.82;
         break;
       case 5:
-        frete = 143.75;
+        frete = 162.76;
         break;
       case 6:
-        frete = 246.72;
+        frete = 260.44;
         break;
       case 7:
-        frete = 327.44;
+        frete = 345.44;
         break;
       case 8:
-        frete = 367.76;
+        frete = 389.65;
         break;
       case 9:
-        frete = 408.09;
+        frete = 433.86;
         break;
       case 10:
-        frete = 452.64;
+        frete = 482.71;
         break;
       case 11:
-        frete = 492.97;
+        frete = 526.92;
         break;
       case 12:
-        frete = 631.28;
+        frete = 669.52;
         break;
       case 13:
-        frete = 671.60;
+        frete = 713.72;
         break;
       case 14:
-        frete = 716.15;
+        frete = 762.57;
         break;
       case 15:
-        frete = 756.48;
+        frete = 806.78;
         break;
       default:
         break;
