@@ -1604,7 +1604,7 @@ function exibirResultadoFrete(frete, cidade, estadoFrete, cep) {
     var freteElement = document.createElement("p");
 
     // Aumentar o valor do frete para cidades específicas
-    if (["rio de janeiro rj"].includes(cidade.toLowerCase())) {
+    if (["duque de caxias rj", "guapimirim rj", "itaborai rj", "mage rj", "mangaratiba rj", "marica rj", "niteroi rj", "piabeta rj", "rio de janeiro rj"].includes(cidade.toLowerCase())) {
       frete += 21.24;
     }
 
