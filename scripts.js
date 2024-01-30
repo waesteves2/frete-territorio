@@ -1604,7 +1604,7 @@ function exibirResultadoFrete(frete, cidade, estadoFrete, cep) {
     var freteElement = document.createElement("p");
 
     // Aumentar o valor do frete para cidades específicas
-    if (["belford roxo rj", "duque de caxias rj", "itaborai rj", "itaguai rj", "mage rj", "mesquita rj", "nilopolis rj", "niteroi rj", "nova iguacu rj", "queimados rj", "rio de janeiro rj", "sao goncalo rj", "sao joao de meriti rj", "seropedica rj","bananal sp", "cariacica es", "serra es", "viana es", "vila velha es", "vitoria es"].includes(cidade.toLowerCase())) {
+    if (["belford roxo rj", "duque de caxias rj", "itaborai rj", "itaguai rj", "mage rj", "mesquita rj", "nilopolis rj", "niteroi rj", "nova iguacu rj", "queimados rj", "rio de janeiro rj", "sao goncalo rj", "sao joao de meriti rj", "seropedica rj","bananal sp"].includes(cidade.toLowerCase())) {
       frete += 21.24;
     }
 
