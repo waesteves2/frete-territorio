@@ -1777,6 +1777,11 @@ var estados = {
       "acrelandia ac", "assis brasil ac", "brasileia ac", "bujari ac", "capixaba ac", "cruzeiro do sul ac", "epitaciolandia ac", "feijo ac", "jordao ac", "mancio lima ac", "manoel urbano ac", "marechal thaumaturgo ac", "placido de castro ac", "porto acre ac", "porto walter ac", "rio branco ac", "rodrigues alves ac", "santa rosa do purus ac", "sena madureira ac", "senador guiomard ac", "tarauaca ac", "xapuri ac",
     ]
   }
+  "df":{
+    "cidades":[
+      "brasilia df"
+  ]
+}
 
 };
 function autocompleteCidade(event) {
