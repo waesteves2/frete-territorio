@@ -1605,22 +1605,9 @@ function exibirResultadoFrete(frete, cidade, estadoFrete, cep) {
 
     // Mapear cidades para valores de frete adicionais
     var cidadesFreteAdicional = {
-      "belford roxo rj": 21.24,
-      "duque de caxias rj": 21.24,
-      "itaborai rj": 21.24,
-      "itaguai rj": 21.24,
-      "mage rj": 21.24,
-      "mesquita rj": 21.24,
-      "nilopolis rj": 21.24,
-      "niteroi rj": 21.24,
-      "nova iguacu rj": 21.24,
-      "queimados rj": 21.24,
-      "rio de janeiro rj": 21.24,
-      "sao goncalo rj": 21.24,
-      "sao joao de meriti rj": 21.24,
-      "seropedica rj": 21.24,
-      "bananal sp": 85.24,
-      "santo antonio da alegria sp": 24.95,
+     "belo horizonte": 22.82, "betim": 22.82, "bonfim": 22.82, "brumadinho": 22.82, "caete": 22.82, "confins": 22.82, "contagem": 22.82, "esmeraldas": 22.82, "florestal": 22.82, "ibirite": 22.82, "igarape": 22.82, "itabirito": 22.82, "itatiaiucu": 22.82, "jaboticatubas": 22.82, "juatuba": 22.82, "lagoa santa": 22.82, "mario campos": 22.82, "mateus leme": 22.82, "moeda": 22.82, "nova lima": 22.82, "nova uniao": 22.82, "piedade dos gerais": 22.82, "raposos": 22.82, "ribeirao das neves": 22.82, "rio acima": 22.82, "rio manso": 22.82, "sabara": 22.82, "santa luzia": 22.82, "sao joaquim de bicas": 22.82, "sarzedo": 22.82, "vespasiano": 22.82, "bacao": 22.82, "belo horizonte": 22.82, "betim": 22.82, "bonfim": 22.82, "brumadinho": 22.82, "caete": 22.82, "confins": 22.82, "contagem": 22.82, "esmeraldas": 22.82, "florestal": 22.82, "ibirite": 22.82, "igarape": 22.82, "itabirito": 22.82, "itatiaiucu": 22.82, "jaboticatubas": 22.82, "juatuba": 22.82, "lagoa santa": 22.82, "mario campos": 22.82, "mateus leme": 22.82, "moeda": 22.82, "nova lima": 22.82, "nova uniao": 22.82, "piedade dos gerais": 22.82, "raposos": 22.82, "ravena": 22.82, "ribeirao das neves": 22.82, "rio acima": 22.82, "rio manso": 22.82, "sabara": 22.82, "santa luzia": 22.82, "sao joaquim de bicas": 22.82, "sarzedo": 22.82, "vespasiano": 22.82,"belford roxo rj": 21.24, "duque de caxias rj": 21.24, "itaborai rj": 21.24, "itaguai rj": 21.24, "mage rj": 21.24, "mesquita rj": 21.24, "nilopolis rj": 21.24, "niteroi rj": 21.24, "nova iguacu rj": 21.24, "queimados rj": 21.24, "rio de janeiro rj": 21.24, "sao goncalo rj": 21.24, "sao joao de meriti rj": 21.24, "seropedica rj": 21.24, "bananal sp": 85.24, "santo antonio da alegria sp": 24.95,
+
+
     };
 
     if (cidadesFreteAdicional[cidade.toLowerCase()]) {
