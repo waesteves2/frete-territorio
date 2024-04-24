@@ -1084,7 +1084,7 @@ function calcularFrete() {
     
     "sao simao": {
       cidades: [
-        "sao simao go",
+        "sao simao go","cristalina go"
       ],
       valorPorVolume: {
   1: 77.80,
@@ -1104,7 +1104,7 @@ function calcularFrete() {
   15: 0
 },
       prazoEntrega: {
-        "sao simao go": 4
+        "sao simao go": 4,"cristalina go":4
       }
 
     },
