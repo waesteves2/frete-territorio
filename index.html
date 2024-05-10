@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -290,6 +291,11 @@
     textarea {
 
       width: 100%;
+    }
+
+    #relogio{
+
+        color: #004899;
     }
   </style>
 
@@ -609,6 +615,9 @@
 
   <br>
 
+<div id="relogio"></div>
+
+
   <div class="logo">
     <a href="https://www.rte.com.br" target="_blank">
 
@@ -769,6 +778,39 @@
   document.getElementById('cepRJ').addEventListener('keydown', function (event) {
     pularProximoCampo(event, 'cepRJ', 'calcularFrete');
   });
+
+
+
+function atualizarRelogio() {
+  var agora = new Date();
+  var hora = agora.getHours();
+  var minutos = agora.getMinutes();
+  var segundos = agora.getSeconds();
+  var dia = agora.getDate();
+  var mes = agora.getMonth() + 1; // Mês começa do zero, então adicionamos 1
+  var ano = agora.getFullYear();
+
+  // Formate os minutos e segundos para ter dois dígitos
+  minutos = minutos < 10 ? '0' + minutos : minutos;
+  segundos = segundos < 10 ? '0' + segundos : segundos;
+
+  // Formate a hora para o formato de 12 horas
+  hora = hora % 12;
+  hora = hora ? hora : 12; // Se hora for zero, então é meio-dia (12 AM)
+
+  // Determine se é AM ou PM
+  var periodo = hora >= 12 ? 'PM' : 'AM';
+
+  // Atualize o elemento HTML com o relógio
+  document.getElementById('relogio').innerHTML = hora + ':' + minutos + ':' + segundos + ' ' + periodo + ' - ' + dia + '/' + mes + '/' + ano;
+
+  // Chame esta função novamente a cada segundo
+  setTimeout(atualizarRelogio, 1000);
+}
+
+// Chame a função pela primeira vez para iniciar o relógio
+atualizarRelogio();
+
 </script>
 
 
