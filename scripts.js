@@ -500,7 +500,7 @@ function calcularFrete() {
 },
 
       prazoEntrega: {
-        "aruja sp": 2, "ferraz de vasconcelos sp": 2, "biritiba-mirim sp": 3, "mogi das cruzes sp": 2, "salesopolis sp": 3, "suzano sp": 2, "biritiba-mirim sp": 3, "guarulhos sp": 1, "itaquaquecetuba sp": 2, "mairipora sp": 2, "maua sp": 2, "poa sp": 2, "ribeirao pires sp": 2, "rio grande da serra sp": 2, "santa isabel sp": 4, "santo andre sp": 1, "sao paulo sp": 1, "aracariguama sp": 3, "barueri sp": 1, "caieiras sp": 2, "carapicuiba sp": 2, "cotia sp": 1, "diadema sp": 1, "embu das artes sp": 2, "embu-guacu sp": 4, "francisco morato sp": 2, "franco da rocha sp": 2, "itapecerica da serra sp": 2, "itapevi sp": 2, "jandira sp": 2, "osasco sp": 1, "pirapora do bom jesus sp": 3, "santana de parnaiba sp": 2, "sao bernardo do campo sp": 1, "sao caetano do sul sp": 2, "sao paulo sp": 1, "taboao da serra sp": 2, "vargem grande paulista sp": 2,
+        "aruja sp": 2, "ferraz de vasconcelos sp": 2, "biritiba-mirim sp": 3, "mogi das cruzes sp": 2, "salesopolis sp": 3, "suzano sp": 2, "biritiba-mirim sp": 3, "guarulhos sp": 2, "itaquaquecetuba sp": 2, "mairipora sp": 2, "maua sp": 2, "poa sp": 2, "ribeirao pires sp": 2, "rio grande da serra sp": 2, "santa isabel sp": 4, "santo andre sp": 2, "sao paulo sp": 2, "aracariguama sp": 3, "barueri sp": 2, "caieiras sp": 2, "carapicuiba sp": 2, "cotia sp": 2, "diadema sp": 2, "embu das artes sp": 2, "embu-guacu sp": 4, "francisco morato sp": 2, "franco da rocha sp": 2, "itapecerica da serra sp": 2, "itapevi sp": 2, "jandira sp": 2, "osasco sp": 2, "pirapora do bom jesus sp": 3, "santana de parnaiba sp": 2, "sao bernardo do campo sp": 2, "sao caetano do sul sp": 2, "sao paulo sp": 2, "taboao da serra sp": 2, "vargem grande paulista sp": 2,
       }
     },
 
