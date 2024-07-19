@@ -655,32 +655,6 @@ function calcularFrete() {
       }
     },
 
-     "tapiratiba": {
-      cidades: [
-        "tapiratiba sp"
-      ],
-      valorPorVolume: {
-  1: 78.09
-  2: 88.09,
-  3: 98.10,
-  4: 108.10,
-  5: 124.49,
-  6: 0,
-  7: 0,
-  8: 0,
-  9: 0,
-  10: 0,
-  11: 0,
-  12: 0,
-  13: 0,
-  14: 0,
-  15: 0
-},
-      prazoEntrega: {
-        "tapiratiba sp": 4,
-      }
-
-    },
     "203": {
       cidades: [
         "abadiania go", "adelandia go", , "agua limpa go", , "alexania go", , "aloandia go", , "americano do brasil go", , "anicuns go", , "aracu go", , "aragoiania go", , "aurilandia go", , "avelinopolis go", , "bonfinopolis go", , "brazabrantes go", , "buriti de goias go", , "cachoeira de goias go", , "calcilandia go", , "caldazinha go", , "campestre de goias go", , "campo limpo de goias go", , "carmo do rio verde go", , "caturai go", , "ceres go", , "cezarina go", , "choupana go", , "cocalzinho de goias go", , "corrego do ouro go", , "corumba de goias go", , "crominia go", , "damolandia go", , "diolandia go", , "edealina go", , "edeia go", , "firminopolis go", , "gameleira de goias go", , "goianesia go", , "goias go", , "guapo go", , "guaraita go", , "heitorai go", , "hidrolandia go", , "indiara go", , "israelandia go", , "itaberai go", , "itaguari go", , "itaguaru go", , "itapirapua go", , "itapuranga go", , "itaucu go", , "jandaia go", , "jaragua go", , "jesupolis go", , "joviania go", , "leopoldo de bulhoes go", , "mairipotaba go", , "moipora go", , "mossamedes go", , "nazario go", , "nova veneza go", , "novo brasil go", , "ouro verde de goias go", , "palmeiras de goias go", , "palmelo go", , "palminopolis go", , "parauna go", , "petrolina de goias go", , "pirenopolis go", , "porteirao go", , "posselandia go", , "professor jamil go", , "rialma go", , "rianapolis go", , "sanclerlandia go", , "santa barbara de goias go", , "santa rita do novo destino go", , "santa rosa de goias go", , "santo antonio de goias go", , "santo antonio do descoberto go", , "sao francisco de goias go", , "sao joao da parauna go", , "sao luis de montes belos go", , "sao patricio go", , "silvania go", , "taquaral de goias go", , "turvania go", , "uruana go", , "uruita go", , "varjao go", , "vianopolis go", , "vicentinopolis go", , "vila propicio go",
