@@ -1653,7 +1653,7 @@ function exibirResultadoFrete(frete, cidade, estadoFrete, cep, tipoPessoa) {
             if (cep && estadoFrete.prazoEntregaCEP && estadoFrete.prazoEntregaCEP[cep]) {
                 prazo = estadoFrete.prazoEntregaCEP[cep];
             } else if (cidade && estadoFrete.prazoEntrega[cidade.toLowerCase()]) {
-                prazo = estadoFrete.prazoEntrega[cidade.toLowerCase()];
+                prazo = estadoFrete.prazoEntrega[cidade.toLowerCase()] + 3;// adiciona dias a mais no prazo de entrega PJ e PF//
             }
 
             // Calcular o prazo para PF (2 dias a mais)
