@@ -95,7 +95,7 @@ function calcularFrete() {
         }
 
         if (peso > 5) {
-            frete += 22.04;
+            frete += 35.04;
         }
 
         if (valorNF > 3500) {
