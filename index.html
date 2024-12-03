@@ -661,6 +661,10 @@
       onkeyup="autocompleteCidade(event)" id="inputField" oninput="sanitizeInput(event)">
     <div id="cidade-list"></div>
 
+    <label id="cepSPLabel" style="display: none;">CEP São Paulo:</label>
+    <input type="text" id="cepSP" style="display:none;" onkeyup="formatarCEP('cepSP')"
+      placeholder="Digite o CEP do Destino">
+
     <label id="cepRJLabel" style="display: none;">CEP NITEROI RJ:</label>
     <input type="text" id="cepRJ" style="display: none;" onkeyup="formatarCEP('cepRJ')"
       placeholder="Digite o CEP do Destino">
