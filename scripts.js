@@ -1532,7 +1532,7 @@ function calcularFrete() {
                 15: 686.29
             },
             prazoEntrega: {
-                "brasilia df": 3, "aguas lindas de goias go": 3, "cidade ocidental go": 3, "formosa go": 3, "luziania go": 3, "novo gama go": 3, "padre bernardo go": 4, "planaltina go": 3, "valparaiso de goias go": 3,
+                "brasilia df": 3,"alvorada do norte go":15.13, "aguas lindas de goias go": 3, "porto alegre rs": 6.82 ,"cidade ocidental go": 3, "formosa go": 3, "luziania go": 3, "novo gama go": 3, "padre bernardo go": 4, "planaltina go": 3, "valparaiso de goias go": 3,
 
             }
         }
