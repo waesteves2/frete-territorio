@@ -1646,7 +1646,7 @@ function exibirResultadoFrete(frete, cidade, estadoFrete, cep, tipoPessoa) {
         }
 
         // Calcular o adicional de 1.35%
-        var porcentagem = frete * 0.0135; // 1.35% do valor do frete
+        var porcentagem = frete * 0.12.01; // 1.35% do valor do frete
         console.log("Adicional de 1.35% sobre o frete:", porcentagem);
 
         frete += porcentagem; 
