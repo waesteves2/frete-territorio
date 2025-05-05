@@ -182,7 +182,7 @@
       }
       input {
         font-size: 13px;
-        padding: 15px;
+        padding: 13px;
       }
       button {
         padding: 12px;
@@ -200,45 +200,47 @@
 <body>
   <div class="container">
     <img src="https://raw.githubusercontent.com/waesteves2/frete-territorio/refs/heads/main/rte.png" width="250" alt="Rodonaves Logo" class="logo" />
-
     <div class="card">
-
       <form id="freightForm" class="form-grid">
         <div class="input-group">
           <i class="fas fa-map-marker-alt input-icon"></i>
-          <input type="number" id="originZip"  placeholder="CEP Origem" required />
+          <input type="number" id="originZip" placeholder="CEP Origem" required />
         </div>
         <div class="input-group">
           <i class="fas fa-map-pin input-icon"></i>
-          <input type="number" id="destinationZip"  placeholder="CEP Destino" required />
+          <input type="number" id="destinationZip" placeholder="CEP Destino" required />
         </div>
         <div class="input-group">
           <i class="fas fa-weight input-icon"></i>
-          <input type="number" id="totalWeight"  step="0.01" placeholder="Peso Total (kg)" required />
+          <input type="number" id="totalWeight" step="0.01" placeholder="Peso Total (kg)" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-boxes input-icon"></i>
+          <input type="number" id="amountPackages" min="1" placeholder="Quantidade de Volumes" required />
         </div>
         <div class="input-group">
           <i class="fas fa-file-invoice-dollar input-icon"></i>
-          <input type="number" id="invoiceValue"  step="0.01" placeholder="Valor Nota Fiscal (R$)" required />
+          <input type="number" id="invoiceValue" step="0.01" placeholder="Valor Nota Fiscal (R$)" required />
         </div>
         <div class="input-group">
           <i class="fas fa-id-card input-icon"></i>
-          <input type="number" id="customerTaxId"  placeholder="CPF/CNPJ Remetente" required />
+          <input type="number" id="customerTaxId" placeholder="CPF/CNPJ Remetente" required />
         </div>
         <div class="input-group">
           <i class="fas fa-id-badge input-icon"></i>
-          <input type="number" id="receiverTaxId"  placeholder="CPF/CNPJ Destinatário" required />
+          <input type="number" id="receiverTaxId" placeholder="CPF/CNPJ Destinatário" required />
         </div>
         <div class="input-group">
           <i class="fas fa-user input-icon"></i>
-          <input type="text" id="contactName"  placeholder="Nome Contato" required />
+          <input type="text" id="contactName" placeholder="Nome Contato" required />
         </div>
         <div class="input-group">
           <i class="fas fa-phone input-icon"></i>
-          <input type="number" id="contactPhone"  placeholder="Telefone" required />
+          <input type="number" id="contactPhone" placeholder="Telefone" required />
         </div>
         <div class="input-group">
           <i class="fas fa-envelope input-icon"></i>
-          <input type="email" id="customerEmail"  placeholder="Email" required />
+          <input type="email" id="customerEmail" placeholder="Email" required />
         </div>
         <button type="submit"><i class="fas fa-calculator"></i> Calcular Frete</button>
       </form>
@@ -280,13 +282,15 @@
 
       try {
         const token = await getToken();
+        const amountPackages = parseInt(document.getElementById("amountPackages").value);
+        const totalWeight = parseFloat(document.getElementById("totalWeight").value);
 
         const formData = {
           OriginZipCode: clean(document.getElementById("originZip").value),
           OriginCityId: 8997,
           DestinationZipCode: clean(document.getElementById("destinationZip").value),
           DestinationCityId: 8997,
-          TotalWeight: parseFloat(document.getElementById("totalWeight").value),
+          TotalWeight: totalWeight,
           EletronicInvoiceValue: parseFloat(document.getElementById("invoiceValue").value),
           CustomerTaxIdRegistration: clean(document.getElementById("customerTaxId").value),
           ReceiverCpfcnp: clean(document.getElementById("receiverTaxId").value),
@@ -294,8 +298,8 @@
           ContactPhoneNumber: document.getElementById("contactPhone").value,
           CustomerEmail: document.getElementById("customerEmail").value,
           Packs: [{
-            AmountPackages: 1,
-            Weight: parseFloat(document.getElementById("totalWeight").value),
+            AmountPackages: amountPackages,
+            Weight: totalWeight / amountPackages, // Distribute weight evenly
             Length: 60.0,
             Height: 60.0,
             Width: 60.0
