@@ -19,7 +19,336 @@
 
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, sans-serif;<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cotação de Frete - Rodonaves</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #e6ecef, #d9e3e8);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+    .container {
+      max-width: 100%;
+      width: 100%;
+      padding: 0 10px;
+      text-align: center;
+    }
+    .logo {
+      max-width: 180px;
+      margin-bottom: 20px;
+      animation: fadeIn 1.2s ease-in;
+    }
+    h2 {
+      color: #005566;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1), inset 0 0 8px rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: slideUp 0.8s ease-out;
+    }
+    .form-grid {
+      display: grid;
+      gap: 15px;
+    }
+    .input-group {
+      display: grid;
+      grid-template-columns: 35px 1fr;
+      align-items: center;
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 4px;
+      box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.05), inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+      transition: box-shadow 0.3s;
+    }
+    .input-group:hover {
+      box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.1), inset -1px -1px 4px rgba(255, 255, 255, 0.9);
+    }
+    .input-icon {
+      color: #005566;
+      font-size: 18px;
+      text-align: center;
+      transition: transform 0.3s, color 0.3s;
+    }
+    .input-group:hover .input-icon {
+      transform: scale(1.1);
+      color: #F47920;
+    }
+    input {
+      border: none;
+      background: transparent;
+      padding: 10px;
+      font-size: 14px;
+      color: #1f2a44;
+      width: 100%;
+      outline: none;
+      border-radius: 6px;
+    }
+    input:focus {
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 10px rgba(244, 121, 32, 0.3);
+    }
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(90deg, #F47920, #ff8c00);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(244, 121, 32, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-top: 15px;
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(244, 121, 32, 0.5);
+    }
+    .resultado {
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: left;
+      animation: fadeIn 0.6s ease-in;
+    }
+    .info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      color: #1f2a44;
+    }
+    .info i {
+      color: #005566;
+      font-size: 20px;
+    }
+    .info strong {
+      color: #005566;
+      font-weight: 600;
+    }
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #005566;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .error {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #e63946;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 5px;
+      }
+      .card {
+        padding: 15px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      .logo {
+        max-width: 150px;
+      }
+      .input-group {
+        grid-template-columns: 30px 1fr;
+      }
+      input {
+        font-size: 13px;
+        padding: 8px;
+      }
+      button {
+        padding: 12px;
+        font-size: 14px;
+      }
+      .info {
+        font-size: 13px;
+      }
+      .info i {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <img src="https://raw.githubusercontent.com/waesteves2/frete-territorio/refs/heads/main/rte.png" alt="Rodonaves Logo" class="logo" />
+
+      <form id="freightForm" class="form-grid">
+        <div class="input-group">
+          <i class="fas fa-map-marker-alt input-icon"></i>
+          <input type="number" id="originZip"  placeholder="CEP Origem" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-map-pin input-icon"></i>
+          <input type="number" id="destinationZip"  placeholder="CEP Destino" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-weight input-icon"></i>
+          <input type="number" id="totalWeight"  step="0.01" placeholder="Peso Total (kg)" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-file-invoice-dollar input-icon"></i>
+          <input type="number" id="invoiceValue"  step="0.01" placeholder="Valor Nota Fiscal (R$)" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-id-card input-icon"></i>
+          <input type="number" id="customerTaxId"  placeholder="CPF/CNPJ Remetente" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-id-badge input-icon"></i>
+          <input type="number" id="receiverTaxId"  placeholder="CPF/CNPJ Destinatário" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-user input-icon"></i>
+          <input type="text" id="contactName"  placeholder="Nome Contato" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-phone input-icon"></i>
+          <input type="number" id="contactPhone"  placeholder="Telefone" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-envelope input-icon"></i>
+          <input type="email" id="customerEmail"  placeholder="Email" required />
+        </div>
+        <button type="submit"><i class="fas fa-calculator"></i> Calcular Frete</button>
+      </form>
+    </div>
+    <div class="resultado" id="result" style="display: none;"></div>
+  </div>
+
+  <script>
+    const tokenUrl = "https://pickup-apigateway.rte.com.br/token";
+    const quotationUrl = "https://quotation-apigateway.rte.com.br/api/v1/gera-cotacao";
+
+    async function getToken() {
+      const params = new URLSearchParams();
+      params.append("auth_type", "DEV");
+      params.append("grant_type", "password");
+      params.append("username", "ADORAIND");
+      params.append("password", "DVNJQOYP");
+
+      const response = await fetch(tokenUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params
+      });
+
+      if (!response.ok) throw new Error("Erro ao obter token.");
+      const data = await response.json();
+      return data.access_token;
+    }
+
+    function clean(value) {
+      return value.replace(/\D/g, "");
+    }
+
+    async function gerarCotacao(event) {
+      event.preventDefault();
+      const resultDiv = document.getElementById("result");
+      resultDiv.style.display = "block";
+      resultDiv.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Carregando cotação...</div>';
+
+      try {
+        const token = await getToken();
+
+        const formData = {
+          OriginZipCode: clean(document.getElementById("originZip").value),
+          OriginCityId: 8997,
+          DestinationZipCode: clean(document.getElementById("destinationZip").value),
+          DestinationCityId: 8997,
+          TotalWeight: parseFloat(document.getElementById("totalWeight").value),
+          EletronicInvoiceValue: parseFloat(document.getElementById("invoiceValue").value),
+          CustomerTaxIdRegistration: clean(document.getElementById("customerTaxId").value),
+          ReceiverCpfcnp: clean(document.getElementById("receiverTaxId").value),
+          ContactName: document.getElementById("contactName").value,
+          ContactPhoneNumber: document.getElementById("contactPhone").value,
+          CustomerEmail: document.getElementById("customerEmail").value,
+          Packs: [{
+            AmountPackages: 1,
+            Weight: parseFloat(document.getElementById("totalWeight").value),
+            Length: 60.0,
+            Height: 60.0,
+            Width: 60.0
+          }]
+        };
+
+        const response = await fetch(quotationUrl, {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (!response.ok) throw new Error("Erro ao obter cotação.");
+        const data = await response.json();
+
+        resultDiv.innerHTML = `
+          <div class="info"><i class="fas fa-dollar-sign"></i> <strong>Valor do Frete:</strong> R$ ${data.Value.toFixed(2).replace('.', ',')}</div>
+          <div class="info"><i class="fas fa-clock"></i> <strong>Prazo de Entrega:</strong> ${data.DeliveryTime} dia(s) útil(eis)</div>
+          <div class="info"><i class="fas fa-barcode"></i> <strong>Protocolo:</strong> ${data.ProtocolNumber}</div>
+        `;
+      } catch (error) {
+        resultDiv.innerHTML = `<div class="error"><i class="fas fa-exclamation-circle"></i> Erro: ${error.message}</div>`;
+      }
+    }
+
+    document.getElementById("freightForm").addEventListener("submit", gerarCotacao);
+  </script>
+</body>
+</html>
       margin: 0;
       padding: 20px;
       text-align: center;
