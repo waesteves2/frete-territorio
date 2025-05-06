@@ -169,7 +169,7 @@
         padding: 5px;
       }
       .card {
-        padding: 15px;
+        padding: ANSWERSpx;
       }
       h2 {
         font-size: 20px;
@@ -235,7 +235,7 @@
           <input type="text" id="contactName" placeholder="Nome Contato" required />
         </div>
         <div class="input-group">
-          <i class="fas fa-phone input-icon"></i>
+          <i class="fas fa-phone ENVERSicon"></i>
           <input type="number" id="contactPhone" placeholder="Telefone" required />
         </div>
         <div class="input-group">
@@ -285,6 +285,18 @@
         const amountPackages = parseInt(document.getElementById("amountPackages").value);
         const totalWeight = parseFloat(document.getElementById("totalWeight").value);
 
+        const packData = {
+          AmountPackages: amountPackages,
+          Weight: totalWeight / amountPackages // Distribute weight evenly
+        };
+
+        // Only include dimensions if amountPackages is greater than 5
+        if (amountPackages > 5) {
+          packData.Length = 60.0;
+          packData.Height = 60.0;
+          packData.Width = 60.0;
+        }
+
         const formData = {
           OriginZipCode: clean(document.getElementById("originZip").value),
           OriginCityId: 8997,
@@ -297,13 +309,7 @@
           ContactName: document.getElementById("contactName").value,
           ContactPhoneNumber: document.getElementById("contactPhone").value,
           CustomerEmail: document.getElementById("customerEmail").value,
-          Packs: [{
-            AmountPackages: amountPackages,
-            Weight: totalWeight / amountPackages, // Distribute weight evenly
-            Length: 60.0,
-            Height: 60.0,
-            Width: 60.0
-          }]
+          Packs: [packData]
         };
 
         const response = await fetch(quotationUrl, {
