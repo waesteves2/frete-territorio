@@ -169,7 +169,7 @@
         padding: 5px;
       }
       .card {
-        padding: ANSWERSpx;
+        padding: 15px;
       }
       h2 {
         font-size: 20px;
@@ -205,6 +205,7 @@
         <div class="input-group">
           <i class="fas fa-map-marker-alt input-icon"></i>
           <input type="number" id="originZip" placeholder="CEP Origem" required />
+
         </div>
         <div class="input-group">
           <i class="fas fa-map-pin input-icon"></i>
@@ -235,7 +236,7 @@
           <input type="text" id="contactName" placeholder="Nome Contato" required />
         </div>
         <div class="input-group">
-          <i class="fas fa-phone ENVERSicon"></i>
+          <i class="fas fa-phone input-icon"></i>
           <input type="number" id="contactPhone" placeholder="Telefone" required />
         </div>
         <div class="input-group">
@@ -284,6 +285,7 @@
         const token = await getToken();
         const amountPackages = parseInt(document.getElementById("amountPackages").value);
         const totalWeight = parseFloat(document.getElementById("totalWeight").value);
+        const contactName = document.getElementById("contactName").value;
 
         const packData = {
           AmountPackages: amountPackages,
@@ -306,7 +308,7 @@
           EletronicInvoiceValue: parseFloat(document.getElementById("invoiceValue").value),
           CustomerTaxIdRegistration: clean(document.getElementById("customerTaxId").value),
           ReceiverCpfcnp: clean(document.getElementById("receiverTaxId").value),
-          ContactName: document.getElementById("contactName").value,
+          ContactName: `TERRITORIO-${contactName}`,
           ContactPhoneNumber: document.getElementById("contactPhone").value,
           CustomerEmail: document.getElementById("customerEmail").value,
           Packs: [packData]
