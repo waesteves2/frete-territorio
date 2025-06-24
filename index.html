@@ -1,341 +1,787 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cotação de Frete - Rodonaves</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <title>Frete Território</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="shortcut icon"
+    href="https://play-lh.googleusercontent.com/-4UcPgppCEfKjvuvCxk42Stqjo7vbiz03f9IDR5wyVLL-AtX-ma7i9c1qPQ-rnKWoA=w240-h480-rw"
+    type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.2/awesomplete.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.2/awesomplete.min.js"></script>
+  <script src="./scripts.js"></script>
+
+
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(145deg, #e6ecef, #d9e3e8);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-    }
-    .container {
-      max-width: 100%;
-      width: 100%;
-      padding: 0 10px;
-      text-align: center;
-    }
-    .logo {
-      max-width: 100%;
-      margin-bottom: 20px;
-      animation: fadeIn 1.2s ease-in;
-    }
-    h2 {
-      color: #005566;
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      letter-spacing: -0.5px;
-      text-transform: uppercase;
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      border-radius: 16px;
+      font-family: Arial, sans-serif;
+      margin: 0;
       padding: 20px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1), inset 0 0 8px rgba(255, 255, 255, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      animation: slideUp 0.8s ease-out;
-    }
-    .form-grid {
-      display: grid;
-      gap: 15px;
-    }
-    .input-group {
-      display: grid;
-      grid-template-columns: 35px 1fr;
-      align-items: center;
-      background: #f8fafc;
-      border-radius: 10px;
-      padding: 4px;
-      box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.05), inset -3px -3px 6px rgba(255, 255, 255, 0.8);
-      transition: box-shadow 0.3s;
-    }
-    .input-group:hover {
-      box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.1), inset -1px -1px 4px rgba(255, 255, 255, 0.9);
-    }
-    .input-icon {
-      color: #005566;
-      font-size: 18px;
       text-align: center;
-      transition: transform 0.3s, color 0.3s;
+      background-color: #f7f7f7;
     }
-    .input-group:hover .input-icon {
-      transform: scale(1.1);
-      color: #F47920;
+
+    h2,
+    h3 {
+      margin-bottom: 20px;
+      color: #054288;
     }
-    input {
-      border: none;
-      background: transparent;
-      padding: 10px;
-      font-size: 14px;
-      color: #1f2a44;
-      width: 100%;
-      outline: none;
-      border-radius: 6px;
-    }
-    input:focus {
-      background: rgba(255, 255, 255, 0.7);
-      box-shadow: 0 0 10px rgba(244, 121, 32, 0.3);
-    }
-    button {
+
+    form {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+      margin-top: 10px;
+      display: block;
+      font-weight: bold;
+      color: #004899;
+    }
+
+    input[type="number"],
+    input[type="text"],
+    select {
+      padding: 10px;
+      border-radius: 5px;
+      border: 2px solid #004899;
       width: 100%;
-      padding: 14px;
-      background: linear-gradient(90deg, #F47920, #ff8c00);
+      max-width: 300px;
+      box-sizing: border-box;
+      margin-top: 5px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #004899;
       color: white;
       border: none;
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 600;
+      border-radius: 5px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(244, 121, 32, 0.3);
-      transition: transform 0.3s, box-shadow 0.3s;
-      margin-top: 15px;
+      font-size: 16px;
     }
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(244, 121, 32, 0.5);
-    }
-    .resultado {
+
+    #resultado {
       margin-top: 20px;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      text-align: left;
-      animation: fadeIn 0.6s ease-in;
-    }
-    .info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-      font-size: 14px;
-      color: #1f2a44;
-    }
-    .info i {
-      color: #005566;
       font-size: 20px;
+      background-color: #004899;
+      color: white;
+      border-radius: 5px;
+      padding: 5px;
     }
-    .info strong {
-      color: #005566;
-      font-weight: 600;
+
+    #cidade {
+      font-size: 16px;
+      font-size: calc(74%);
     }
-    .loading {
+
+    #observacao {
+      color: #777;
+      margin-top: 10px;
+      font-size: small;
+    }
+
+    #valido {
+      font-size: 13px;
+      padding: 5px;
+      color: #777;
+    }
+
+    .logo {
+      background-image: url();
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin: auto;
+    }
+
+    .icon {
       display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 10px;
-      color: #005566;
-      font-size: 14px;
-      font-weight: 500;
-    }
-    .error {
-      display: flex;
       align-items: center;
-      gap: 10px;
-      color: #e63946;
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 30px;
+      margin-top: 20px;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+
+    .icon a {
+      margin: 10px;
+      text-decoration: none;
+      color: #004899;
+      transition: color 0.3s;
     }
-    @keyframes slideUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-    @media (max-width: 480px) {
-      .container {
-        padding: 5px;
-      }
-      .card {
-        padding: ANSWERSpx;
-      }
-      h2 {
-        font-size: 20px;
-      }
-      .logo {
-        max-width: 300px;
-      }
-      .input-group {
-        grid-template-columns: 30px 1fr;
-      }
-      input {
-        font-size: 13px;
-        padding: 13px;
-      }
-      button {
-        padding: 12px;
-        font-size: 14px;
-      }
-      .info {
-        font-size: 13px;
-      }
-      .info i {
-        font-size: 18px;
-      }
+
+    .icon a:hover {
+      color: #080808;
     }
   </style>
+
+  <style>
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+    }
+
+    .icon a {
+      margin: 10px;
+      text-decoration: none;
+      color: #004899;
+    }
+
+    .icon a:hover {
+      color: #080808;
+    }
+
+    .logo {
+
+      background-image: url();
+      background-repeat: no-repeat;
+      background-size: contain;
+      margin: auto;
+    }
+  </style>
+
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow: scroll;
+    }
+
+    #menu-icon {
+      cursor: pointer;
+      font-size: 24px;
+      margin: 10px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 2;
+      /* Garante que o ícone do menu fique acima do modal */
+      color: #004899;
+    }
+
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    #modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+      width: 80%;
+      max-width: 400px;
+      height: auto;
+    }
+
+    .modal-item {
+      cursor: pointer;
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .modal-icon {
+      font-size: 36px;
+      margin-right: 10px;
+    }
+
+    .modal-label {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+
+    #close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 18px;
+      color: #ff3333;
+      cursor: pointer;
+    }
+
+    .modal-icon {
+      cursor: pointer;
+      font-size: 36px;
+      margin: 10px;
+      display: inline;
+
+    }
+
+    .info-modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #f7f7f7;
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 3;
+      color: black;
+      width: 80%;
+      height: 90%;
+      overflow-y: auto;
+    }
+
+    #close-info-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 18px;
+      color: #ff3333;
+      cursor: pointer;
+    }
+
+
+
+    #info-contatos {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .close-info-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 18px;
+      color: #ff3333;
+      cursor: pointer;
+    }
+
+    .contato-item {
+      margin: 10px 0;
+    }
+
+    .contato-label {
+      display: inline-block;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .contato-link {
+      text-decoration: none;
+      color: #004899;
+      font-weight: bold;
+    }
+
+    textarea {
+
+      width: 100%;
+    }
+
+    #relogio{
+
+        color: #004899;
+    }
+  </style>
+
+  
+
 </head>
+
 <body>
-  <div class="container">
-    <img src="https://raw.githubusercontent.com/waesteves2/frete-territorio/refs/heads/main/rte.png" width="250" alt="Rodonaves Logo" class="logo" />
-    <div class="card">
-      <form id="freightForm" class="form-grid">
-        <div class="input-group">
-          <i class="fas fa-map-marker-alt input-icon"></i>
-          <input type="number" id="originZip" placeholder="CEP Origem" required />
+
+  
+  <div id="menu-icon" onclick="toggleModal()">&#9776;</div>
+  <div id="modal">
+    <div id="modal-content" style="color: #054288;">
+      <div id="close-btn" onclick="toggleModal()">X</div>
+      <div class="modal-item" onclick="openInfoModal('empresa')">
+        <span class="modal-icon">&#x1F3E2;</span>
+        <span class="modal-label">Empresa</span>
+      </div>
+      <div class="modal-item" onclick="openInfoModal('contatos')">
+        <span class="modal-icon">&#x1F4DE;</span>
+        <span class="modal-label">Contatos</span>
+      </div>
+      <div class="modal-item" onclick="window.open('https://maps.app.goo.gl/1pW6DMXV5BGVF8Cs8', '_blank')">
+        <span class="modal-icon">&#x1F4CD;</span>
+        <span class="modal-label">Localização</span>
+      </div>
+
+      <div class="modal-item" onclick="mostrarHistorico('historico')">
+        <span class="modal-icon">&#x1F4DD;</span>
+        <span class="modal-label">Histórico</span>
+      </div>
+      <div class="modal-item" onclick="abrirSugestoes()">
+        <span class="modal-icon">&#x1F4A1;</span>
+        <span class="modal-label">Sugestões</span>
+      </div>
+
+      <div class="modal-item" onclick="openInfoModal('email')">
+        <span class="modal-icon">&#x1F4E7;</span>
+        <span class="modal-label">E-mail</span>
+      </div>
+      <a href="https://waesteves2.github.io/Declaracao-304-RTE/" target="_blank">
+        <div class="modal-item">
+          <span class="modal-icon">&#x1F4C4;</span>
+          <span class="modal-label">Declaração de Conteúdo</span>
         </div>
-        <div class="input-group">
-          <i class="fas fa-map-pin input-icon"></i>
-          <input type="number" id="destinationZip" placeholder="CEP Destino" required />
-        </div>
-        <div class="input-group">
-          <i class="fas fa-weight input-icon"></i>
-          <input type="number" id="totalWeight" step="0.01" placeholder="Peso Total (kg)" required />
-        </div>
-        <div class="input-group">
-          <i class="fas fa-boxes input-icon"></i>
-          <input type="number" id="amountPackages" min="1" placeholder="Quantidade de Volumes" required />
-        </div>
-        <div class="input-group">
-          <i class="fas fa-file-invoice-dollar input-icon"></i>
-          <input type="number" id="invoiceValue" step="0.01" placeholder="Valor Nota Fiscal (R$)" required />
-        </div>
-        <div class="input-group">
-          <i class="fas fa-id-card input-icon"></i>
-          <input type="number" id="customerTaxId" placeholder="CPF/CNPJ Remetente" required />
-        </div>
-        <div class="input-group">
-          <i class="fas fa-id-badge input-icon"></i>
-          <input type="number" id="receiverTaxId" placeholder="CPF/CNPJ Destinatário" required />
-        </div>
-        <div class="input-group">
-          <i class="fas fa-user input-icon"></i>
-          <input type="text" id="contactName" placeholder="Nome Contato" required />
-        </div>
-        <div class="input-group">
-          <i class="fas fa-phone ENVERSicon"></i>
-          <input type="number" id="contactPhone" placeholder="Telefone" required />
-        </div>
-        <div class="input-group">
-          <i class="fas fa-envelope input-icon"></i>
-          <input type="email" id="customerEmail" placeholder="Email" required />
-        </div>
-        <button type="submit"><i class="fas fa-calculator"></i> Calcular Frete</button>
-      </form>
+      </a>
+
+
+
     </div>
-    <div class="resultado" id="result" style="display: none;"></div>
+
+  </div>
+  <div id="info-historico" class="info-modal">
+    <h2 id="histo">Histórico de Cotações</h2>
+    <div id="close-info-btn" onclick="closeInfoModal()">X</div>
+    <div class="modal-icon" onclick="mostrarHistorico('historico')">&#x1F4DD;</div> <!-- Ícone de histórico -->
+    <span style="color: #080808;">Histórico</span>
   </div>
 
+
+  <div id="info-contatos" class="info-modal">
+    <div class="close-info-btn" onclick="closeInfoModal()">X</div>
+    <div class="contato-item">
+      <span class="contato-label">Telefone Fixo:</span>
+      <i class="fas fa-phone"></i>
+      <a class="contato-link" href="tel:1421042600">14-2104 2600</a>
+    </div>
+
+    <div class="contato-item">
+      <span class="contato-label">Whatsapp:</span>
+      <a class="contato-link" href="https://wa.me/5514998178261" target="_blank">
+        <img src="https://seeklogo.com/images/W/whatsapp-icon-logo-BDC0A8063B-seeklogo.com.png" alt="Ícone do WhatsApp"
+          width="20">
+        (14) 99817-8261
+      </a>
+    </div>
+  </div>
+
+  <div id="info-empresa" class="info-modal">
+    <div class="close-info-btn" onclick="closeInfoModal()">X</div>
+    <img src="./rte.png" alt="" width="250">
+    <div style="text-align: left; margin: 10px;">
+      <p><strong>Razão Social:</strong>Rodonaves Transportes Encomendas LTDA</p>
+      <p><strong>CNPJ:</strong> 44.914.992/0001-38</p>
+      <p><strong>Endereço:</strong> Rua General Augusto Soares dos Santos, 550, Parque Industrial Lagoinha</p>
+      <p><strong>Cidade | Estado:</strong> Ribeirão Preto | SP</p>
+      <p><strong>CEP:</strong> 14095-240</p>
+      <p><strong>Telefones:</strong> (16) 2101-9900</p>
+      <img src="https://lh5.googleusercontent.com/p/AF1QipPzaJM0TLhL42gU_dOhJS_ZPHp5ogovmeFrXyjZ=w408-h252-k-no" alt=""
+        width="270">
+      <p><strong>Google Maps:</strong> <a href="https://maps.app.goo.gl/716hYoAdt9ZVZTVD6" target="_blank">Veja no
+          Mapa</a></p>
+
+    </div>
+  </div>
+
+  <div id="info-email" class="info-modal">
+    <div class="close-info-btn" onclick="closeInfoModal()">X</div>
+    <h3>E-mails dos Colaboradores</h3>
+
+    <div class="email-item">
+      <span class="email-icon">&#x1F4E7;</span>
+      <h3>E-mail Gerente Adm</h3>
+      <p>E-mail: <a href="mailto:rte304@rte.com.br">rte304@rte.com.br</a></p>
+    </div>
+
+    <div class="email-item">
+      <span class="email-icon">&#x1F4E7;</span>
+      <h3>E-mail para Coletas</h3>
+      <p>E-mail: <a href="mailto:coletareversa@rte.com.br">coletareversa@rte.com.br</a></p>
+    </div>
+
+    <div class="email-item">
+      <span class="email-icon">&#x1F4E7;</span>
+      <h3>E-mail para Pesquisa</h3>
+      <p>E-mail: <a href="mailto:pesquisa.304@rte.com.br">pesquisa.304@rte.com.br</a></p>
+    </div>
+
+    <div class="email-item">
+      <span class="email-icon">&#x1F4E7;</span>
+      <h3>E-mail para Pesquisa 2</h3>
+      <p>E-mail: <a href="mailto:pesquisa2.304@rte.com.br">pesquisa2.304@rte.com.br</a></p>
+    </div>
+
+    <div class="email-item">
+      <span class="email-icon">&#x1F4E7;</span>
+      <h3>E-mail para Comercial</h3>
+      <p>E-mail: <a href="mailto:comercial.304@rte.com.br">comercial.304@rte.com.br</a></p>
+    </div>
+
+    <div class="email-item">
+      <span class="email-icon">&#x1F4E7;</span>
+      <h3>E-mail para Comercial 2</h3>
+      <p>E-mail: <a href="mailto:comercial2.304@rte.com.br">comercial2.304@rte.com.br</a></p>
+    </div>
+  </div>
+
+  <div id="sugestoes" class="info-modal" style="display: none;">
+    <div class="close-info-btn" onclick="closeInfoModal()">X</div>
+    <h3>Sugestões</h3>
+    <p>Deixe sua sugestão para melhorarmos nosso aplicativo:</p>
+    <textarea id="sugestaoInput" rows="4" cols="50" placeholder="Digite sua sugestão aqui"></textarea>
+    <button onclick="enviarSugestao()">Enviar Sugestão</button>
+  </div>
+
+
+
+
+
   <script>
-    const tokenUrl = "https://pickup-apigateway.rte.com.br/token";
-    const quotationUrl = "https://quotation-apigateway.rte.com.br/api/v1/gera-cotacao";
-
-    async function getToken() {
-      const params = new URLSearchParams();
-      params.append("auth_type", "DEV");
-      params.append("grant_type", "password");
-      params.append("username", "ADORAIND");
-      params.append("password", "DVNJQOYP");
-
-      const response = await fetch(tokenUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: params
-      });
-
-      if (!response.ok) throw new Error("Erro ao obter token.");
-      const data = await response.json();
-      return data.access_token;
+    function abrirSugestoes() {
+      document.getElementById('sugestoes').style.display = 'block';
     }
 
-    function clean(value) {
-      return value.replace(/\D/g, "");
+    function closeSugestoes() {
+      document.getElementById('sugestoes').style.display = 'none';
     }
 
-    async function gerarCotacao(event) {
-      event.preventDefault();
-      const resultDiv = document.getElementById("result");
-      resultDiv.style.display = "block";
-      resultDiv.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i> Carregando cotação...</div>';
-
-      try {
-        const token = await getToken();
-        const amountPackages = parseInt(document.getElementById("amountPackages").value);
-        const totalWeight = parseFloat(document.getElementById("totalWeight").value);
-
-        const packData = {
-          AmountPackages: amountPackages,
-          Weight: totalWeight / amountPackages // Distribute weight evenly
-        };
-
-        // Only include dimensions if amountPackages is greater than 5
-        if (amountPackages > 5) {
-          packData.Length = 60.0;
-          packData.Height = 60.0;
-          packData.Width = 60.0;
-        }
-
-        const formData = {
-          OriginZipCode: clean(document.getElementById("originZip").value),
-          OriginCityId: 8997,
-          DestinationZipCode: clean(document.getElementById("destinationZip").value),
-          DestinationCityId: 8997,
-          TotalWeight: totalWeight,
-          EletronicInvoiceValue: parseFloat(document.getElementById("invoiceValue").value),
-          CustomerTaxIdRegistration: clean(document.getElementById("customerTaxId").value),
-          ReceiverCpfcnp: clean(document.getElementById("receiverTaxId").value),
-          ContactName: document.getElementById("contactName").value,
-          ContactPhoneNumber: document.getElementById("contactPhone").value,
-          CustomerEmail: document.getElementById("customerEmail").value,
-          Packs: [packData]
-        };
-
-        const response = await fetch(quotationUrl, {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${token}`,
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(formData)
-        });
-
-        if (!response.ok) throw new Error("Erro ao obter cotação.");
-        const data = await response.json();
-
-        resultDiv.innerHTML = `
-          <div class="info"><i class="fas fa-dollar-sign"></i> <strong>Valor do Frete:</strong> R$ ${data.Value.toFixed(2).replace('.', ',')}</div>
-          <div class="info"><i class="fas fa-clock"></i> <strong>Prazo de Entrega:</strong> ${data.DeliveryTime} dia(s) útil(eis)</div>
-          <div class="info"><i class="fas fa-barcode"></i> <strong>Protocolo:</strong> ${data.ProtocolNumber}</div>
-        `;
-      } catch (error) {
-        resultDiv.innerHTML = `<div class="error"><i class="fas fa-exclamation-circle"></i> Erro: ${error.message}</div>`;
+    function enviarSugestao() {
+      var sugestao = document.getElementById('sugestaoInput').value;
+      if (sugestao.trim() !== "") {
+        var mensagem = 'Nova sugestão: ' + sugestao;
+        enviarWhatsApp(mensagem);
+        closeSugestoes(); // Fechar a janela após enviar a sugestão (opcional)
+      } else {
+        alert('Por favor, digite sua sugestão antes de enviar.');
       }
     }
 
-    document.getElementById("freightForm").addEventListener("submit", gerarCotacao);
+    function enviarWhatsApp(mensagem) {
+      // Substitua o número abaixo pelo seu número de WhatsApp
+      var numeroWhatsApp = '14998577463';
+      var linkWhatsApp = 'https://wa.me/' + numeroWhatsApp + '?text=' + encodeURIComponent(mensagem);
+      window.open(linkWhatsApp, '_blank');
+    }
   </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+    function mostrarHistorico() {
+      var infoModal = document.getElementById('info-historico');
+      var historicoContent = document.createElement('div');
+
+      historicoContent.style.textAlign = 'left';
+      historicoContent.style.marginLeft = '10px';
+      historicoContent.style.fontSize = 'small';
+
+      historicoContent.innerHTML = '<h2>Histórico de Cotações</h2>';
+
+      var historicoCotacoes = JSON.parse(localStorage.getItem('historicoCotacoes')) || [];
+
+      if (historicoCotacoes.length > 0) {
+        historicoCotacoes.forEach(function (item, index) {
+          historicoContent.innerHTML += '<p>Cotação: ' + (index + 1) + '</p>';
+          historicoContent.innerHTML += '<p><strong>Volumes:</strong> ' + item.volumes + '</p>';
+          historicoContent.innerHTML += '<p><strong>Peso:</strong> ' + item.pesoTotal + '</p>';
+          historicoContent.innerHTML += '<p><strong>Valor da NF:</strong> ' + item.valorNF + '</p>';
+          historicoContent.innerHTML += '<p><strong>CNPJ do Destino:</strong> ' + item.cnpjDestino + '</p>';
+          historicoContent.innerHTML += '<p><strong>Cidade de Destino:</strong> ' + item.cidadeDestino + '</p>';
+          historicoContent.innerHTML += '<p><strong>Frete:</strong> ' + item.resultadoFrete + '</p>';
+          historicoContent.innerHTML += '<input type="checkbox" id="cotação-' + index + '" class="selecionar-cotacao"> Selecionar para Impressão';
+          historicoContent.innerHTML += '<hr>';
+        });
+
+        historicoContent.innerHTML += '<button onclick="imprimirCotacoesSelecionadas()"><i class="fas fa-print"></i> Imprimir Cotações </button>';
+      } else {
+        historicoContent.innerHTML += '<p>Nenhum histórico disponível.</p>';
+      }
+
+      infoModal.innerHTML = '';
+      infoModal.appendChild(historicoContent);
+
+      var closeButton = document.createElement('div');
+      closeButton.id = 'close-info-btn';
+      closeButton.textContent = 'X';
+      closeButton.onclick = closeInfoModal;
+
+      infoModal.appendChild(closeButton);
+
+      infoModal.style.display = 'block';
+
+      var ultimaLimpeza = localStorage.getItem('ultimaLimpezaHistorico');
+      if (!ultimaLimpeza || (Date.now() - parseInt(ultimaLimpeza)) > (20 * 24 * 60 * 60 * 1000)) {
+        localStorage.removeItem('historicoCotacoes');
+        localStorage.setItem('ultimaLimpezaHistorico', Date.now());
+      }
+    }
+
+    function imprimirCotacoesSelecionadas() {
+      var historicoCotacoes = JSON.parse(localStorage.getItem('historicoCotacoes')) || [];
+      var cotacoesSelecionadas = [];
+
+      var checkboxes = document.getElementsByClassName('selecionar-cotacao');
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          cotacoesSelecionadas.push(i);
+        }
+      }
+
+      if (cotacoesSelecionadas.length > 0) {
+        var conteudoImpressao = '';
+
+        cotacoesSelecionadas.forEach(function (index) {
+          var cotacao = historicoCotacoes[index];
+          conteudoImpressao += '<h2>Cotação: ' + (index + 1) + '</h2>' +
+            '<p><strong>Volumes:</strong> ' + cotacao.volumes + '</p>' +
+            '<p><strong>Peso:</strong> ' + cotacao.pesoTotal + '</p>' +
+            '<p><strong>Valor da NF:</strong> ' + cotacao.valorNF + '</p>' +
+            '<p><strong>CNPJ do Destino:</strong> ' + cotacao.cnpjDestino + '</p>' +
+            '<p><strong>Cidade de Destino:</strong> ' + cotacao.cidadeDestino + '</p>' +
+            '<p><strong>Resultado do Frete:</strong> ' + cotacao.resultadoFrete + '</p>' +
+            '<hr>';
+        });
+
+        var janelaImpressao = window.open('', '_blank');
+        janelaImpressao.document.write(conteudoImpressao);
+        janelaImpressao.document.close();
+        janelaImpressao.print();
+      } else {
+        alert('Selecione pelo menos uma cotação para imprimir.');
+      }
+    }
+
+    function openInfoModal(type) {
+      var infoModal = document.getElementById('info-' + type);
+      infoModal.style.display = 'block';
+
+      if (type === 'historico') {
+        mostrarHistorico();
+      }
+    }
+
+    function closeInfoModal() {
+      var infoModal = document.getElementById('info-historico');
+      infoModal.style.display = 'none';
+    }
+
+  </script>
+
+
+  <script>
+    function toggleModal() {
+      var modal = document.getElementById('modal');
+      modal.style.display = (modal.style.display === 'none' || modal.style.display === '') ? 'flex' : 'none';
+    }
+
+    function openInfoModal(type) {
+      var infoModal = document.getElementById('info-' + type);
+      infoModal.style.display = 'block';
+    }
+
+    function closeInfoModal() {
+      var infoModals = document.querySelectorAll('.info-modal');
+      infoModals.forEach(function (modal) {
+        modal.style.display = 'none';
+      });
+    }
+  </script>
+
+  <script>
+    function toggleModal() {
+      var modal = document.getElementById('modal');
+      modal.style.display = (modal.style.display === 'none' || modal.style.display === '') ? 'flex' : 'none';
+    }
+  </script>
+
+  <br>
+
+  <div class="logo">
+    <a href="https://www.rte.com.br" target="_blank">
+
+      <img src="rte.png" alt="campuscode logo" width=320 height>
+    </a>
+  </div>
+
+  <h2>Tabela Calçadistas</h2>
+  <p id="valido">Válido somente para fretes com origem em Jaú-SP</p>
+
+  <form id="limparFormulario">
+    <label for="volumes">Quantidade de Volumes:</label>
+    <select id="volumes" name="volumes" required>
+      <option value="1">1 volume</option>
+      <option value="2">2 volumes</option>
+      <option value="3">3 volumes</option>
+      <option value="4">4 volumes</option>
+      <option value="5">5 volumes</option>
+      <option value="6">6 volumes</option>
+      <option value="7">7 volumes</option>
+      <option value="8">8 volumes</option>
+      <option value="9">9 volumes</option>
+      <option value="10">10 volumes</option>
+      <option value="11">11 volumes</option>
+      <option value="12">12 volumes</option>
+      <option value="13">13 volumes</option>
+      <option value="14">14 volumes</option>
+      <option value="15">15 volumes</option>
+    </select>
+
+    <label for="valorNF">Valor da Nota Fiscal:</label>
+    <input type="number" id="valorNF" name="valorNF" required placeholder="Digite o Valor da NF R$">
+
+
+    <label for="peso">Peso Total (KG):</label>
+    <input type="number" id="peso" name="peso" required placeholder="Digite o Peso Kg">
+
+
+    <label for="cnpjDestino">CPF/CNPJ do Destino:</label>
+    <input type="number" id="cnpjDestino" name="cnpjDestino" placeholder="Digite CPF/CNPJ do Destino">
+
+    <label for="cidade">Cidade de Destino:</label>
+    <input type="text" id="cidade" placeholder="Digite a cidade e a sigla do estado (Ex: Jaú, SP)"
+      onkeyup="autocompleteCidade(event)" id="inputField" oninput="sanitizeInput(event)">
+    <div id="cidade-list"></div>
+
+    <label id="cepSPLabel" style="display: none;">CEP São Paulo:</label>
+    <input type="text" id="cepSP" style="display:none;" onkeyup="formatarCEP('cepSP')"
+      placeholder="Digite o CEP do Destino">
+
+    <label id="cepRJLabel" style="display: none;">CEP NITEROI RJ:</label>
+    <input type="text" id="cepRJ" style="display: none;" onkeyup="formatarCEP('cepRJ')"
+      placeholder="Digite o CEP do Destino">
+
+    <button type="button" onclick="calcularFrete()">
+      <i class="fas fa-calculator"></i> Calcular Frete
+    </button>
+  </form>
+
+  <div id="resultado">
+    <div id="papai"></div>
+  </div>
+
+  <button id="print" type="button" onclick="imprimirResultado()">
+    <i class="fas fa-print"></i> Imprimir Cotação
+  </button>
+
+
+
+
+
+  <p id="observacao">Obs: algumas regiões podem possuir taxas adicionais.</p>
+
+  <div class="icon">
+    <a href="https://www.facebook.com/rodonaves" target="_blank">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a href="https://rte.com.br/" target="_blank">
+      <i class="fas fa-globe"></i>
+    </a>
+    <a href="https://instagram.com/rterodonaves?igshid=NTc4MTIwNjQ2YQ==" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+
+
+  <script>
+    function imprimirResultado() {
+      var quantidadeVolumes = document.getElementById('volumes').value;
+      var pesoTotal = document.getElementById('peso').value;
+      var valorNF = document.getElementById('valorNF').value;
+      var cnpjDestino = document.getElementById('cnpjDestino').value;
+      var cidadeDestino = document.getElementById('cidade').value;
+      var resultadoFrete = document.getElementById('resultado').innerText;
+
+      var janelaImpressao = window.open('', '_blank', 'width=800,height=600');
+      janelaImpressao.document.write('<html><head><title>Extrato do Frete</title>');
+      janelaImpressao.document.write('<style>body { font-family: Arial, sans-serif; margin: 20px; } h2 { color: #004899; } #extrato { border: 2px solid #004899; padding: 10px; border-radius: 5px; } </style>');
+      janelaImpressao.document.write('</head><body>');
+
+
+      janelaImpressao.document.write('<div id="extrato">');
+      janelaImpressao.document.write('<img src="rte.png" alt="Logo da Empresa" style="max-width: 30%;">');
+      janelaImpressao.document.write('<h2>Cotação do Frete</h2>');
+      janelaImpressao.document.write('<p><strong>Volumes:</strong> ' + quantidadeVolumes + '</p>');
+      janelaImpressao.document.write('<p><strong>Peso:</strong> ' + pesoTotal + '</p>');
+      janelaImpressao.document.write('<p><strong>Valor da NF:</strong> ' + valorNF + '</p>');
+      janelaImpressao.document.write('<p><strong>CNPJ do Destino:</strong> ' + cnpjDestino + '</p>');
+      janelaImpressao.document.write('<p><strong>Cidade de Destino:</strong> ' + cidadeDestino + '</p>');
+      janelaImpressao.document.write('<p><strong>Valor do Frete:</strong> ' + resultadoFrete + '</p>');
+      janelaImpressao.document.write('</div>');
+      janelaImpressao.document.write('');
+      janelaImpressao.document.close();
+      janelaImpressao.open();
+
+
+    };
+
+
+  </script>
+
+  <script>
+  // Função para pular para o próximo campo ao pressionar "Enter"
+  function pularProximoCampo(event, campoAtual, proximoCampo) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById(proximoCampo).focus();
+    }
+  }
+
+  // Atribua a função aos campos de input
+  document.getElementById('volumes').addEventListener('keydown', function (event) {
+    pularProximoCampo(event, 'volumes', 'valorNF');
+  });
+
+  document.getElementById('valorNF').addEventListener('keydown', function (event) {
+    pularProximoCampo(event, 'valorNF', 'peso');
+  });
+
+  document.getElementById('peso').addEventListener('keydown', function (event) {
+    pularProximoCampo(event, 'peso', 'cnpjDestino');
+  });
+
+  document.getElementById('cnpjDestino').addEventListener('keydown', function (event) {
+    pularProximoCampo(event, 'cnpjDestino', 'cidade');
+  });
+
+  document.getElementById('cidade').addEventListener('keydown', function (event) {
+    pularProximoCampo(event, 'cidade', 'cepSP');
+  });
+
+  document.getElementById('cepSP').addEventListener('keydown', function (event) {
+    pularProximoCampo(event, 'cepSP', 'cepRJ');
+  });
+
+  // Adicione mais campos se necessário
+
+  document.getElementById('cepRJ').addEventListener('keydown', function (event) {
+    pularProximoCampo(event, 'cepRJ', 'calcularFrete');
+  });
+
+
+
+</script>
+
+
+
 </body>
+
 </html>
