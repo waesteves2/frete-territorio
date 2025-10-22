@@ -204,12 +204,11 @@
       <form id="freightForm" class="form-grid">
         <div class="input-group">
           <i class="fas fa-map-marker-alt input-icon"></i>
-          <input type="number" id="originZip" placeholder="CEP Origem" required />
-
+          <input type="number" id="originZip" placeholder="CEP Origem (8 dígitos)" required pattern="\d{8}" />
         </div>
         <div class="input-group">
           <i class="fas fa-map-pin input-icon"></i>
-          <input type="number" id="destinationZip" placeholder="CEP Destino" required />
+          <input type="number" id="destinationZip" placeholder="CEP Destino (8 dígitos)" required pattern="\d{8}" />
         </div>
         <div class="input-group">
           <i class="fas fa-weight input-icon"></i>
@@ -252,6 +251,7 @@
   <script>
     const tokenUrl = "https://pickup-apigateway.rte.com.br/token";
     const quotationUrl = "https://quotation-apigateway.rte.com.br/api/v1/gera-cotacao";
+    const cityUrl = "https://dne-api.rte.com.br/api/cities/byzipcode";
 
     async function getToken() {
       const params = new URLSearchParams();
@@ -275,6 +275,47 @@
       return value.replace(/\D/g, "");
     }
 
+    async function getCityId(zipCode, token) {
+      try {
+        // Ensure CEP is 8 digits
+        if (!/^\d{8}$/.test(zipCode)) {
+          throw new Error(`CEP ${zipCode} inválido. Deve conter exatamente 8 dígitos.`);
+        }
+
+        const response = await fetch(`${cityUrl}?zipCode=${zipCode}`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Accept": "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          const errorData = await response.text();
+          console.warn(`Erro ao obter cidade para o CEP ${zipCode}: ${response.status} - ${errorData}`);
+          return 8997; // Fallback to default city ID
+        }
+
+        const data = await response.json();
+        let cityData = null;
+        if (Array.isArray(data) && data.length > 0) {
+          cityData = data[0];
+        } else if (typeof data === 'object' && data !== null) {
+          cityData = data;
+        }
+
+        if (cityData && cityData.Id) {
+          return cityData.Id;
+        } else {
+          console.warn(`Nenhum ID de cidade retornado para o CEP ${zipCode}: ${JSON.stringify(data)}`);
+          return 8997; // Fallback to default city ID
+        }
+      } catch (error) {
+        console.warn(`Erro na chamada da API de cidades para o CEP ${zipCode}: ${error.message}`);
+        return 8997; // Fallback to default city ID
+      }
+    }
+
     async function gerarCotacao(event) {
       event.preventDefault();
       const resultDiv = document.getElementById("result");
@@ -283,6 +324,19 @@
 
       try {
         const token = await getToken();
+
+        const originZip = clean(document.getElementById("originZip").value);
+        const destinationZip = clean(document.getElementById("destinationZip").value);
+
+        // Validate CEPs
+        if (!/^\d{8}$/.test(originZip) || !/^\d{8}$/.test(destinationZip)) {
+          throw new Error("Os CEPs de origem e destino devem conter exatamente 8 dígitos.");
+        }
+
+        // Fetch city IDs
+        const originCityId = await getCityId(originZip, token);
+        const destCityId = await getCityId(destinationZip, token);
+
         const amountPackages = parseInt(document.getElementById("amountPackages").value);
         const totalWeight = parseFloat(document.getElementById("totalWeight").value);
         const contactName = document.getElementById("contactName").value;
@@ -300,10 +354,10 @@
         }
 
         const formData = {
-          OriginZipCode: clean(document.getElementById("originZip").value),
-          OriginCityId: 8997,
-          DestinationZipCode: clean(document.getElementById("destinationZip").value),
-          DestinationCityId: 8997,
+          OriginZipCode: originZip,
+          OriginCityId: originCityId,
+          DestinationZipCode: destinationZip,
+          DestinationCityId: destCityId,
           TotalWeight: totalWeight,
           EletronicInvoiceValue: parseFloat(document.getElementById("invoiceValue").value),
           CustomerTaxIdRegistration: clean(document.getElementById("customerTaxId").value),
@@ -313,6 +367,15 @@
           CustomerEmail: document.getElementById("customerEmail").value,
           Packs: [packData]
         };
+
+        // Warn if fallback city ID was used
+        let warnings = "";
+        if (originCityId === 8997) {
+          warnings += `<div class="error"><i class="fas fa-exclamation-circle"></i> Atenção: Não foi possível obter o ID da cidade para o CEP de origem (${originZip}). Usando ID padrão (8997).</div>`;
+        }
+        if (destCityId === 8997) {
+          warnings += `<div class="error"><i class="fas fa-exclamation-circle"></i> Atenção: Não foi possível obter o ID da cidade para o CEP de destino (${destinationZip}). Usando ID padrão (8997).</div>`;
+        }
 
         const response = await fetch(quotationUrl, {
           method: "POST",
@@ -324,10 +387,13 @@
           body: JSON.stringify(formData)
         });
 
-        if (!response.ok) throw new Error("Erro ao obter cotação.");
+        if (!response.ok) {
+          const errorData = await response.text();
+          throw new Error(`Erro ao obter cotação: ${response.status} - ${errorData}`);
+        }
         const data = await response.json();
 
-        resultDiv.innerHTML = `
+        resultDiv.innerHTML = warnings + `
           <div class="info"><i class="fas fa-dollar-sign"></i> <strong>Valor do Frete:</strong> R$ ${data.Value.toFixed(2).replace('.', ',')}</div>
           <div class="info"><i class="fas fa-clock"></i> <strong>Prazo de Entrega:</strong> ${data.DeliveryTime} dia(s) útil(eis)</div>
           <div class="info"><i class="fas fa-barcode"></i> <strong>Protocolo:</strong> ${data.ProtocolNumber}</div>
